@@ -1,73 +1,13 @@
 {
   "metadata": {
-    "lastScraped": "2026-06-06T08:30:00Z",
-    "totalPapers": 15,
-    "verifiedPapers": 5,
-    "unverifiedPapers": 10,
+    "lastScraped": "2026-06-06T11:00:00Z",
+    "totalPapers": 7,
+    "verifiedPapers": 7,
+    "unverifiedPapers": 0,
     "brokenPapers": 0,
-    "contentHash": "r4e2a1b7c9f3"
+    "contentHash": "a6aa5521263d"
   },
   "papers": [
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/3b8ece23ae324e918dcf0e6e6d7f85d1",
-      "name": "PiXL Reading Test (Pack 1)",
-      "term": "Spring",
-      "test_number": 1,
-      "school": "Elfrida Primary School - PiXL",
-      "source": "known",
-      "verified": false,
-      "note": "Browser download only (S3/CloudFront restriction)"
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/2898d0b6c7d2479c815f0fcca2425008",
-      "name": "PiXL Reading Test (Pack 2)",
-      "term": "Spring",
-      "test_number": 2,
-      "school": "Elfrida Primary School - PiXL",
-      "source": "known",
-      "verified": false,
-      "note": "Browser download only (S3/CloudFront restriction)"
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/e78983a45f884482bf74b526a075bd43",
-      "name": "PiXL Reading Test (Pack 3)",
-      "term": "Spring",
-      "test_number": 3,
-      "school": "Elfrida Primary School - PiXL",
-      "source": "known",
-      "verified": false,
-      "note": "Browser download only (S3/CloudFront restriction)"
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/3fec87537c4a46a892d0ca7e60d469d7",
-      "name": "PiXL Reading Test (Pack 4)",
-      "term": "Summer",
-      "test_number": 4,
-      "school": "Elfrida Primary School - PiXL",
-      "source": "known",
-      "verified": false,
-      "note": "Browser download only (S3/CloudFront restriction)"
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/416ddbf592b24f3dae49e0e62d9d44dc",
-      "name": "PiXL Reading Test (Pack 5)",
-      "term": "Summer",
-      "test_number": 5,
-      "school": "Elfrida Primary School - PiXL",
-      "source": "known",
-      "verified": false,
-      "note": "Browser download only (S3/CloudFront restriction)"
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/7ae82fb79e434918b915704955a2d616",
-      "name": "PiXL Reading Test (Pack 6)",
-      "term": "Summer",
-      "test_number": 6,
-      "school": "Elfrida Primary School - PiXL",
-      "source": "known",
-      "verified": false,
-      "note": "Browser download only (S3/CloudFront restriction)"
-    },
     {
       "url": "https://westend.lancs.sch.uk/wp-content/uploads/2020/03/yr4_comp_v2-1.pdf",
       "name": "Year 4 Reading Comprehension v2-1",
@@ -137,26 +77,6 @@
       "source": "search",
       "size_bytes": 53254,
       "verified": true
-    },
-    {
-      "url": "https://corshamregis.wilts.sch.uk/wp-content/uploads/2021/01/Reading-Test-1-Y4-Spring.pdf",
-      "name": "Year 4 Reading Test 1 (Spring)",
-      "term": "Spring",
-      "test_number": 1,
-      "school": "Corsham Regis Primary School",
-      "source": "search",
-      "verified": false,
-      "note": "Inferred URL - may need verification"
-    },
-    {
-      "url": "https://www.leysprimaryschool.com/year-4-15/",
-      "name": "Year 4 Reading Resources Page",
-      "term": "All",
-      "test_number": null,
-      "school": "Leys Primary School",
-      "source": "search",
-      "verified": false,
-      "note": "Resource page with links - not a direct PDF"
     }
   ]
 }

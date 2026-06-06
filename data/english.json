@@ -1,73 +1,13 @@
 {
   "metadata": {
-    "lastScraped": "2026-06-06T08:30:00Z",
-    "totalPapers": 21,
-    "verifiedPapers": 11,
-    "unverifiedPapers": 10,
+    "lastScraped": "2026-06-06T11:00:00Z",
+    "totalPapers": 15,
+    "verifiedPapers": 15,
+    "unverifiedPapers": 0,
     "brokenPapers": 0,
-    "contentHash": "e5b3f8d1a2c9"
+    "contentHash": "11589337adc7"
   },
   "papers": [
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/5a8be124651f4923a686a17654d00125",
-      "name": "PiXL GPS Test (Pack 1)",
-      "term": "Spring",
-      "test_number": 1,
-      "school": "Elfrida Primary School - PiXL",
-      "source": "known",
-      "verified": false,
-      "note": "Browser download only (S3/CloudFront restriction)"
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/25d393e0d1a2412ea4426735c0f7aa56",
-      "name": "PiXL GPS Test (Pack 2)",
-      "term": "Spring",
-      "test_number": 2,
-      "school": "Elfrida Primary School - PiXL",
-      "source": "known",
-      "verified": false,
-      "note": "Browser download only (S3/CloudFront restriction)"
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/ee73d43556284ac39fecb5b6d5965dac",
-      "name": "PiXL GPS Test (Pack 3)",
-      "term": "Spring",
-      "test_number": 3,
-      "school": "Elfrida Primary School - PiXL",
-      "source": "known",
-      "verified": false,
-      "note": "Browser download only (S3/CloudFront restriction)"
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/f0c6948a4a6b4598a4cdb24e705877f6",
-      "name": "PiXL GPS Test (Pack 4)",
-      "term": "Summer",
-      "test_number": 4,
-      "school": "Elfrida Primary School - PiXL",
-      "source": "known",
-      "verified": false,
-      "note": "Browser download only (S3/CloudFront restriction)"
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/7fa3c5aa0c16404fa0c4f792dae67816",
-      "name": "PiXL GPS Test (Pack 5)",
-      "term": "Summer",
-      "test_number": 5,
-      "school": "Elfrida Primary School - PiXL",
-      "source": "known",
-      "verified": false,
-      "note": "Browser download only (S3/CloudFront restriction)"
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/cb76ff18684642829c805e0999fead04",
-      "name": "PiXL GPS Test (Pack 6)",
-      "term": "Summer",
-      "test_number": 6,
-      "school": "Elfrida Primary School - PiXL",
-      "source": "known",
-      "verified": false,
-      "note": "Browser download only (S3/CloudFront restriction)"
-    },
     {
       "url": "https://www.longsutton.lincs.sch.uk/classes/HomeLearning/22%20Feb/Year%204/Tuesday/Y4%20GPS%20PAPER%201%20QUESTIONS%20-%20SPRING.pdf",
       "name": "Year 4 GPS Paper 1 (Spring)",
