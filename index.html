@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Year 4 Arithmetic Practice - Auto-Updating PiXL Papers</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="description" content="Auto-updating collection of free Year 4 PiXL arithmetic test papers. Weekly scraper finds new papers automatically. Summer, Spring & Autumn terms with answers.">
 <meta property="og:title" content="Year 4 Arithmetic Practice - Auto-Updating PiXL Papers">
 <meta property="og:description" content="20+ free Year 4 PiXL arithmetic test papers, auto-updated weekly. Summer, Spring & Autumn terms. Download and print.">
@@ -144,6 +145,14 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
 
 <nav id="sidebar">
   <div class="sidebar-header">
+    <svg width="36" height="36" viewBox="0 0 64 64" style="flex-shrink:0;margin-bottom:10px;">
+      <rect x="2" y="2" width="60" height="60" rx="14" ry="14" fill="#0d1119" stroke="#1c212b" stroke-width="2"/>
+      <text x="32" y="46" font-family="'Segoe UI',system-ui,sans-serif" font-size="36" font-weight="700" fill="#d4b85c" text-anchor="middle">4</text>
+      <text x="18" y="22" font-family="'Segoe UI',system-ui,sans-serif" font-size="14" font-weight="600" fill="#8b919e" text-anchor="middle">Y</text>
+      <text x="48" y="20" font-family="'Segoe UI',system-ui,sans-serif" font-size="14" font-weight="600" fill="#60a5fa" text-anchor="middle">+</text>
+      <text x="48" y="50" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="600" fill="#34d399" text-anchor="middle">x</text>
+      <text x="16" y="54" font-family="'Segoe UI',system-ui,sans-serif" font-size="14" font-weight="600" fill="#a78bfa" text-anchor="middle">-</text>
+    </svg>
     <h1>Year 4 Arithmetic<br>PiXL Papers & Resources</h1>
     <div class="subtitle">Auto-updating weekly</div>
     <div id="last-updated-sidebar">Loading...</div>
@@ -202,9 +211,9 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
   </div>
 </div>
 
-<div class="highlight-box">
-  <h4>- Currently: Summer Term 2026</h4>
-  <p>Misha is in the summer term now. Start with the <strong>Summer Term papers below</strong>. Do one test per week and track the score. Once summer tests feel comfortable, use the Spring and Autumn papers for revision. <strong>New papers appear here automatically</strong> as schools publish them.</p>
+<div class="highlight-box" id="current-term-box">
+  <h4 id="current-term-heading">- Loading...</h4>
+  <p id="current-term-body">Checking current term...</p>
 </div>
 
 <div class="stats-bar" id="stats-bar">
@@ -522,6 +531,84 @@ document.querySelectorAll('.nav-link').forEach(function(link) {
 
 // ---- Init ----
 loadData();
+updateTermHighlight();
+
+// ---- Dynamic term detection ----
+function getUKSchoolTerm() {
+  var now = new Date();
+  var month = now.getMonth(); // 0=Jan, 11=Dec
+  var year = now.getFullYear();
+  var day = now.getDate();
+
+  // UK primary school terms (approximate - varies slightly by LEA):
+  // Autumn term 1: Sep - Oct half-term (~Oct 20-28)
+  // Autumn term 2: Nov - Christmas (~Dec 18-22)
+  // Spring term 1: Jan - Feb half-term (~Feb 10-18)
+  // Spring term 2: Feb - Easter (~Mar 25-Apr 15)
+  // Summer term 1: Apr - May half-term (~May 25-31)
+  // Summer term 2: Jun - mid/late Jul (~Jul 18-22)
+
+  var currentTerm, nextTerm, academicYear;
+
+  if (month >= 8) { // Sep-Dec
+    currentTerm = 'Autumn';
+    academicYear = year + '-' + (year+1);
+    if (month === 8 && day < 5) {
+      // Still summer holiday - about to start autumn
+      currentTerm = 'Summer (holiday)';
+      nextTerm = 'Autumn';
+    }
+  } else if (month >= 0 && month <= 3) { // Jan-Mar
+    currentTerm = 'Spring';
+    academicYear = (year-1) + '-' + year;
+    if (month === 0 && day < 6) {
+      currentTerm = 'Christmas (holiday)';
+      nextTerm = 'Spring';
+    }
+  } else if (month >= 4 && month <= 7) { // Apr-Jul
+    if (month <= 5 || (month === 6 && day < 25)) {
+      currentTerm = 'Summer';
+    } else {
+      currentTerm = 'Summer (ending soon)';
+    }
+    academicYear = (year-1) + '-' + year;
+    if (month === 4 && day < 16) {
+      currentTerm = 'Easter (holiday)';
+      nextTerm = 'Summer';
+    }
+  }
+
+  // Half-term refinement
+  var halfTermDates = {
+    autumn:  { month: 9,  start: 20, end: 28 },  // Oct
+    spring:  { month: 1,  start: 10, end: 18 },  // Feb
+    summer:  { month: 4,  start: 25, end: 31 },  // May
+  };
+
+  return {
+    term: currentTerm || 'Unknown',
+    academicYear: academicYear,
+    nextTerm: nextTerm || null,
+    isHoliday: currentTerm && currentTerm.includes('holiday'),
+  };
+}
+
+function updateTermHighlight() {
+  var info = getUKSchoolTerm();
+  var heading = document.getElementById('current-term-heading');
+  var body = document.getElementById('current-term-body');
+
+  var termName = info.term.replace(' (holiday)', '').replace(' (ending soon)', '');
+  var emoji = { Summer: '-', Spring: '-', Autumn: '-', Winter: '-' }[termName] || '-';
+
+  if (info.isHoliday) {
+    heading.textContent = emoji + ' School Holiday - ' + info.nextTerm + ' Term ' + info.academicYear.split('-')[1] + ' Starts Soon';
+    body.innerHTML = 'Misha is currently on school holiday. The <strong>' + info.nextTerm + ' Term papers</strong> will be the ones to use when school resumes. You can still use the current papers for revision practice. <strong>New papers appear here automatically</strong> as schools publish them.';
+  } else {
+    heading.textContent = emoji + ' Currently: ' + info.term + ' Term ' + info.academicYear;
+    body.innerHTML = 'Misha is in the <strong>' + termName.toLowerCase() + ' term</strong> now. Start with the <strong>' + termName + ' Term papers below</strong>. Do one test per week and track the score. Once these feel comfortable, use the other term papers for revision. <strong>New papers appear here automatically</strong> as schools publish them.';
+  }
+}
 </script>
 </body>
 </html>
