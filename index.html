@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Year 4 Arithmetic Practice - Auto-Updating PiXL Papers</title>
+<title>Year 4 SATs Prep - Maths, Reading & English (Auto-Updating PiXL Papers)</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta name="description" content="Auto-updating collection of free Year 4 PiXL arithmetic test papers. Weekly scraper finds new papers automatically. Summer, Spring & Autumn terms with answers.">
-<meta property="og:title" content="Year 4 Arithmetic Practice - Auto-Updating PiXL Papers">
-<meta property="og:description" content="20+ free Year 4 PiXL arithmetic test papers, auto-updated weekly. Summer, Spring & Autumn terms. Download and print.">
+<meta name="description" content="Free auto-updating Year 4 SATs preparation: PiXL maths, reading, and English (GPS) papers from UK schools. Auto-discovered weekly. Summer, Spring & Autumn terms.">
+<meta property="og:title" content="Year 4 SATs Prep - Auto-Updating PiXL Papers">
+<meta property="og:description" content="60+ free Year 4 papers across maths, reading and English. Auto-updated weekly from school websites. Download and print.">
 <style>
 :root {
   --bg: #090d14; --bg2: #0d1119; --bg3: #111620; --bg4: #171c28;
@@ -19,7 +19,8 @@
   --blue: #60a5fa; --blue-bg: rgba(96, 165, 250, 0.10);
   --purple: #a78bfa; --purple-bg: rgba(167, 139, 250, 0.10);
   --amber: #fbbf24; --amber-bg: rgba(251, 191, 36, 0.10);
-  --red: #f87171; --red-bg: rgba(248, 113, 113, 0.10);
+  --pink: #f472b6; --pink-bg: rgba(244, 114, 182, 0.10);
+  --teal: #2dd4bf; --teal-bg: rgba(45, 212, 191, 0.10);
   --radius: 8px; --radius-sm: 6px;
   --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
   --mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', monospace;
@@ -27,11 +28,23 @@
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; display: flex; min-height: 100vh; }
+
+/* Sidebar */
 #sidebar { width: 280px; min-width: 280px; background: var(--bg2); border-right: 1px solid var(--border); display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 100; transition: transform 0.3s ease; overflow-y: auto; }
 .sidebar-header { padding: 24px 20px 16px; border-bottom: 1px solid var(--border); }
 .sidebar-header h1 { font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.3; margin-bottom: 2px; }
 .sidebar-header .subtitle { font-size: 11px; color: var(--text3); }
 #last-updated-sidebar { font-size: 10px; color: var(--text3); margin-top: 4px; }
+
+/* Subject tabs in sidebar */
+.sidebar-tabs { display: flex; margin: 12px 8px 0; gap: 4px; }
+.sidebar-tab { flex: 1; padding: 8px 6px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; text-align: center; border: 1px solid var(--border); background: var(--bg3); color: var(--text2); transition: var(--transition); }
+.sidebar-tab:hover { background: var(--bg4); color: var(--text); }
+.sidebar-tab.active { background: var(--accent-soft); color: var(--accent2); border-color: rgba(200,168,78,0.3); }
+.sidebar-tab .tab-count { font-size: 10px; font-weight: 400; display: block; color: var(--text3); }
+.sidebar-tab.active .tab-count { color: var(--accent2); opacity: 0.8; }
+
+/* Sidebar nav */
 .sidebar-nav { padding: 12px 0; flex: 1; }
 .nav-section { margin-bottom: 2px; }
 .nav-section-header { display: flex; align-items: center; gap: 8px; padding: 10px 20px; cursor: pointer; user-select: none; font-size: 12px; font-weight: 600; color: var(--text2); transition: var(--transition); border-radius: 6px; margin: 0 8px; }
@@ -49,25 +62,52 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
 .dot.summer { background: var(--amber); } .dot.spring { background: var(--green); } .dot.autumn { background: var(--blue); } .dot.all { background: var(--purple); }
 .sidebar-footer { padding: 12px 20px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text3); display: flex; align-items: center; gap: 8px; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+
+/* Main */
 #main { flex: 1; margin-left: 280px; display: flex; flex-direction: column; overflow-y: auto; min-height: 100vh; }
 #content { flex: 0 0 auto; padding: 32px 40px 60px; max-width: 960px; }
-.hero { margin-bottom: 28px; }
-.hero h2 { font-size: 26px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-.hero p { font-size: 14px; color: var(--text2); line-height: 1.7; max-width: 700px; }
-.hero .badge-row { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+
+/* Subject selector bar */
+.subject-bar { display: flex; gap: 8px; margin-bottom: 24px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 4px; }
+.subject-btn { flex: 1; padding: 12px 16px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; text-align: center; border: none; background: transparent; color: var(--text2); transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px; }
+.subject-btn:hover { color: var(--text); background: var(--bg3); }
+.subject-btn.active { background: var(--accent-soft); color: var(--accent2); }
+.subject-btn .s-icon { font-size: 18px; }
+.subject-btn .s-count { font-size: 11px; font-weight: 400; color: var(--text3); margin-left: 4px; }
+.subject-btn.active .s-count { color: var(--accent2); opacity: 0.7; }
+
+/* Hero */
+.hero { margin-bottom: 20px; }
+.hero h2 { font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.hero p { font-size: 13px; color: var(--text2); line-height: 1.7; max-width: 700px; }
+.hero .badge-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
 .badge { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 500; background: var(--bg3); color: var(--text2); border: 1px solid var(--border); }
 .badge.auto { background: var(--green-bg); color: var(--green); border-color: rgba(52,211,153,0.2); }
 .badge.live { background: var(--purple-bg); color: var(--purple); border-color: rgba(167,139,250,0.2); }
-.stats-bar { display: flex; gap: 14px; margin-bottom: 32px; flex-wrap: wrap; }
-.stat { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 20px; display: flex; align-items: center; gap: 12px; min-width: 130px; }
-.stat-icon { font-size: 22px; }
-.stat-count { font-size: 22px; font-weight: 700; font-family: var(--mono); color: var(--accent2); }
-.stat-label { font-size: 12px; color: var(--text3); }
-.section { margin-bottom: 40px; }
+.badge.maths { background: var(--blue-bg); color: var(--blue); border-color: rgba(96,165,250,0.2); }
+.badge.reading { background: var(--pink-bg); color: var(--pink); border-color: rgba(244,114,182,0.2); }
+.badge.english { background: var(--teal-bg); color: var(--teal); border-color: rgba(45,212,191,0.2); }
+
+/* Stats */
+.stats-bar { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+.stat { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 18px; display: flex; align-items: center; gap: 10px; min-width: 100px; }
+.stat-icon { font-size: 20px; }
+.stat-count { font-size: 20px; font-weight: 700; font-family: var(--mono); color: var(--accent2); }
+.stat-label { font-size: 11px; color: var(--text3); }
+
+/* Highlight box */
+.highlight-box { background: var(--amber-bg); border: 1px solid rgba(251,191,36,0.2); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 24px; }
+.highlight-box h4 { font-size: 13px; font-weight: 600; color: var(--amber); margin-bottom: 6px; }
+.highlight-box p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+/* Sections */
+.section { margin-bottom: 36px; }
 .section:target { scroll-margin-top: 20px; }
-.section-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: 10px; }
+.section-title { font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: 10px; }
 .section-title .s-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
 .s-dot.summer { background: var(--amber); } .s-dot.spring { background: var(--green); } .s-dot.autumn { background: var(--blue); } .s-dot.all { background: var(--purple); } .s-dot.other { background: var(--accent); }
+
+/* Test table */
 .test-table { width: 100%; border-collapse: collapse; }
 .test-table th { text-align: left; padding: 10px 14px; font-size: 11px; color: var(--text3); font-weight: 600; border-bottom: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.5px; }
 .test-table td { padding: 10px 14px; font-size: 13px; border-bottom: 1px solid rgba(28,33,43,0.5); }
@@ -85,11 +125,13 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
 .verified-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 4px; }
 .verified-dot.ok { background: var(--green); }
 .verified-dot.unverified { background: var(--amber); }
+
+/* Resource cards */
 .card-grid { display: flex; flex-direction: column; gap: 10px; }
 .card { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; transition: var(--transition); display: flex; gap: 16px; align-items: flex-start; }
 .card:hover { background: var(--bg4); border-color: #252a35; }
 .card-icon { width: 40px; height: 40px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; margin-top: 2px; }
-.card-icon.pdf { background: var(--blue-bg); } .card-icon.web { background: var(--purple-bg); } .card-icon.game { background: var(--green-bg); }
+.card-icon.pdf { background: var(--blue-bg); } .card-icon.web { background: var(--purple-bg); } .card-icon.game { background: var(--green-bg); } .card-icon.reading { background: var(--pink-bg); } .card-icon.english { background: var(--teal-bg); }
 .card-body { flex: 1; min-width: 0; }
 .card-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
 .card-desc { font-size: 12px; color: var(--text2); line-height: 1.6; margin-bottom: 8px; }
@@ -102,20 +144,33 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
 .tag.worksheets { background: rgba(52,211,153,0.08); color: var(--green); }
 .tag.games { background: rgba(167,139,250,0.08); color: var(--purple); }
 .tag.gov { background: rgba(251,191,36,0.08); color: var(--amber); }
+.tag.reading-tag { background: var(--pink-bg); color: var(--pink); }
+.tag.english-tag { background: var(--teal-bg); color: var(--teal); }
+.tag.maths-tag { background: var(--blue-bg); color: var(--blue); }
 .card-link { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500; color: var(--accent2); text-decoration: none; transition: var(--transition); }
 .card-link:hover { color: #e0c868; text-decoration: underline; }
-.highlight-box { background: var(--amber-bg); border: 1px solid rgba(251,191,36,0.2); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 28px; }
-.highlight-box h4 { font-size: 13px; font-weight: 600; color: var(--amber); margin-bottom: 6px; }
-.highlight-box p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+/* Tips */
 .tip-box { background: var(--accent-soft); border: 1px solid rgba(200,168,78,0.15); border-radius: var(--radius); padding: 16px 20px; margin-top: 24px; }
 .tip-box h4 { font-size: 13px; font-weight: 600; color: var(--accent2); margin-bottom: 8px; }
 .tip-box ul { padding-left: 18px; }
 .tip-box li { font-size: 12px; color: var(--text2); margin-bottom: 4px; line-height: 1.6; }
 .tip-box li strong { color: var(--text); }
+
+/* Automation note */
 .automation-note { background: var(--bg3); border: 1px dashed var(--border); border-radius: var(--radius); padding: 12px 16px; margin-top: 20px; font-size: 11px; color: var(--text3); }
 .automation-note strong { color: var(--text2); }
+
+/* Empty state */
+.empty-state { text-align: center; padding: 40px 20px; color: var(--text3); }
+.empty-state .empty-icon { font-size: 40px; margin-bottom: 12px; }
+.empty-state h3 { font-size: 16px; color: var(--text2); margin-bottom: 6px; }
+.empty-state p { font-size: 12px; line-height: 1.6; }
+
+/* Hamburger */
 #hamburger { display: none; position: fixed; top: 14px; left: 14px; z-index: 200; width: 38px; height: 38px; border-radius: 50%; background: var(--bg2); border: 1px solid var(--border); color: var(--text2); font-size: 18px; cursor: pointer; align-items: center; justify-content: center; }
 #overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 99; }
+
 @media (max-width: 768px) {
   #sidebar { transform: translateX(-100%); }
   #sidebar.open { transform: translateX(0); }
@@ -124,14 +179,16 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
   #content { padding: 24px 16px 40px; }
   #hamburger { display: flex; }
   .hero h2 { font-size: 20px; }
-  .stats-bar { gap: 8px; }
-  .stat { padding: 10px 14px; min-width: auto; }
-  .stat-count { font-size: 18px; }
+  .stats-bar { gap: 6px; }
+  .stat { padding: 8px 12px; min-width: auto; }
+  .stat-count { font-size: 16px; }
+  .subject-bar { flex-wrap: wrap; }
+  .subject-btn { font-size: 12px; padding: 10px 12px; }
   .test-table { font-size: 11px; }
   .test-table th, .test-table td { padding: 8px 6px; }
 }
 @media print {
-  #sidebar, #hamburger, #overlay { display: none; }
+  #sidebar, #hamburger, #overlay, .subject-bar { display: none; }
   #main { margin-left: 0; }
   body { background: #fff; color: #000; }
   .card, .test-table tr { break-inside: avoid; }
@@ -153,47 +210,36 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
       <text x="48" y="50" font-family="'Segoe UI',system-ui,sans-serif" font-size="12" font-weight="600" fill="#34d399" text-anchor="middle">x</text>
       <text x="16" y="54" font-family="'Segoe UI',system-ui,sans-serif" font-size="14" font-weight="600" fill="#a78bfa" text-anchor="middle">-</text>
     </svg>
-    <h1>Year 4 Arithmetic<br>PiXL Papers & Resources</h1>
-    <div class="subtitle">Auto-updating weekly</div>
+    <h1>Year 4 SATs Prep<br>Maths - Reading - English</h1>
+    <div class="subtitle">Auto-updating weekly from UK schools</div>
     <div id="last-updated-sidebar">Loading...</div>
   </div>
+
+  <div class="sidebar-tabs">
+    <div class="sidebar-tab active" data-subject="maths" onclick="switchSubject('maths')">Maths<span class="tab-count" id="tab-count-maths">-</span></div>
+    <div class="sidebar-tab" data-subject="reading" onclick="switchSubject('reading')">Reading<span class="tab-count" id="tab-count-reading">-</span></div>
+    <div class="sidebar-tab" data-subject="english" onclick="switchSubject('english')">English<span class="tab-count" id="tab-count-english">-</span></div>
+  </div>
+
   <div class="sidebar-nav">
     <div class="nav-section">
-      <div class="nav-section-header open" onclick="toggleNav(this)" data-section="piXL">
-        PiXL Arithmetic Papers <span class="nav-count" id="nav-total">-</span>
+      <div class="nav-section-header open" onclick="toggleNav(this)" data-section="papers">
+        <span id="nav-section-label">PiXL Papers</span> <span class="nav-count" id="nav-total">-</span>
         <span class="nav-chevron">-</span>
       </div>
-      <div class="nav-subitems open" data-section="piXL">
+      <div class="nav-subitems open" data-section="papers" id="nav-subitems">
         <a class="nav-link active" href="#summer"><span class="dot summer"></span> Summer Term <span style="margin-left:auto;font-size:10px;color:var(--text3)" id="nav-summer">-</span></a>
         <a class="nav-link" href="#spring"><span class="dot spring"></span> Spring Term <span style="margin-left:auto;font-size:10px;color:var(--text3)" id="nav-spring">-</span></a>
         <a class="nav-link" href="#autumn"><span class="dot autumn"></span> Autumn Term <span style="margin-left:auto;font-size:10px;color:var(--text3)" id="nav-autumn">-</span></a>
-        <a class="nav-link" href="#all-terms"><span class="dot all"></span> All Terms / Full Packs <span style="margin-left:auto;font-size:10px;color:var(--text3)" id="nav-all">-</span></a>
+        <a class="nav-link" href="#all-terms"><span class="dot all"></span> All Terms / Packs <span style="margin-left:auto;font-size:10px;color:var(--text3)" id="nav-all">-</span></a>
       </div>
     </div>
-    <div class="nav-section">
-      <div class="nav-section-header" onclick="toggleNav(this)" data-section="more">
-        More Papers & PDFs <span class="nav-count">5</span>
+    <div class="nav-section" id="nav-resources-section">
+      <div class="nav-section-header" onclick="toggleNav(this)" data-section="resources">
+        More Resources <span class="nav-count" id="nav-resources-count">-</span>
         <span class="nav-chevron">-</span>
       </div>
-      <div class="nav-subitems" data-section="more">
-        <a class="nav-link" href="#twinkl">Twinkl Test Pack</a>
-        <a class="nav-link" href="#salamanders">Math Salamanders</a>
-        <a class="nav-link" href="#thirdspace">Third Space Learning</a>
-        <a class="nav-link" href="#sats-papers">Past SATs Papers</a>
-        <a class="nav-link" href="#gov">Official KS2 Materials</a>
-      </div>
-    </div>
-    <div class="nav-section">
-      <div class="nav-section-header" onclick="toggleNav(this)" data-section="online">
-        Online Practice & Games <span class="nav-count">5</span>
-        <span class="nav-chevron">-</span>
-      </div>
-      <div class="nav-subitems" data-section="online">
-        <a class="nav-link" href="#mathsframe">Mathsframe Arithmetic</a>
-        <a class="nav-link" href="#topmarks">Topmarks Mental Maths</a>
-        <a class="nav-link" href="#bbc">BBC Bitesize KS2</a>
-        <a class="nav-link" href="#sats-arcade">SATs Arcade</a>
-        <a class="nav-link" href="#primarytools">PrimaryTools</a>
+      <div class="nav-subitems" data-section="resources" id="nav-resources-subitems">
       </div>
     </div>
   </div>
@@ -203,12 +249,25 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
 <div id="main"><div id="content">
 
 <div class="hero">
-  <h2>- PiXL Year 4 Arithmetic - Auto-Updating Paper Collection</h2>
-  <p>All known free PiXL arithmetic test papers for Year 4, automatically discovered and verified. This page rebuilds itself every week - new papers found on school websites appear here automatically. No manual updates needed.</p>
+  <h2 id="hero-title">- Year 4 Maths - PiXL Arithmetic & Practice Papers</h2>
+  <p id="hero-desc">All known free PiXL arithmetic test papers for Year 4, automatically discovered from UK school websites and verified weekly. Switch to Reading and English using the tabs above.</p>
   <div class="badge-row">
     <span class="badge auto">- Auto-Updating Weekly</span>
     <span class="badge live">- Live from School Sites</span>
+    <span class="badge maths" id="badge-subject">- Maths</span>
   </div>
+</div>
+
+<div class="subject-bar">
+  <button class="subject-btn active" data-subject="maths" onclick="switchSubject('maths')">
+    <span class="s-icon">-</span> Maths <span class="s-count" id="count-maths">-</span>
+  </button>
+  <button class="subject-btn" data-subject="reading" onclick="switchSubject('reading')">
+    <span class="s-icon">-</span> Reading <span class="s-count" id="count-reading">-</span>
+  </button>
+  <button class="subject-btn" data-subject="english" onclick="switchSubject('english')">
+    <span class="s-icon">-</span> English (GPS) <span class="s-count" id="count-english">-</span>
+  </button>
 </div>
 
 <div class="highlight-box" id="current-term-box">
@@ -223,174 +282,121 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
   <div class="stat"><span class="stat-icon">-</span><div><div class="stat-count" id="stat-updated">-</div><div class="stat-label">Last Updated</div></div></div>
 </div>
 
-<!-- Dynamic PiXL sections - populated by JS -->
-<div id="piXL-sections"></div>
+<!-- Dynamic paper sections -->
+<div id="paper-sections"></div>
 
-<!-- Static Resources -->
-<div class="section"><div class="section-title"><span class="s-dot other"></span> More Test Papers & Printable PDFs</div>
-<div class="card-grid">
+<!-- Resource cards -->
+<div id="resource-sections"></div>
 
-<div class="card" id="twinkl">
-  <div class="card-icon pdf">-</div>
-  <div class="card-body">
-    <div class="card-title">Twinkl - Year 4 Arithmetic Full Tests Pack</div>
-    <div class="card-desc">Six complete Year 4 arithmetic test papers in SATs format with answer sheets. Used in classrooms across the UK. Free trial available.</div>
-    <div class="card-tags"><span class="tag paid">Paid/Free Trial</span><span class="tag pdf-tag">PDF</span><span class="tag">6 Tests</span></div>
-    <a class="card-link" href="https://www.twinkl.co.uk/resource/t2-m-1164-year-4-arithmetic-full-tests" target="_blank" rel="noopener">View on Twinkl -</a>
-  </div>
-</div>
-<div class="card" id="salamanders">
-  <div class="card-icon pdf">-</div>
-  <div class="card-body">
-    <div class="card-title">Math Salamanders - Mental Maths Test Year 4</div>
-    <div class="card-desc">Free printable worksheets (16 questions each). Covers all four operations, fractions, measurement. Unlimited - new sheets each refresh.</div>
-    <div class="card-tags"><span class="tag free">Free</span><span class="tag pdf-tag">PDF</span><span class="tag worksheets">Worksheets</span></div>
-    <a class="card-link" href="https://www.math-salamanders.com/mental-maths-test.html" target="_blank" rel="noopener">Browse Worksheets -</a>
-  </div>
-</div>
-<div class="card" id="thirdspace">
-  <div class="card-icon pdf">-</div>
-  <div class="card-body">
-    <div class="card-title">Third Space Learning - Free Year 4 Maths Worksheets</div>
-    <div class="card-desc">Curriculum-aligned, teacher-created worksheets using maths mastery approach. White Rose aligned. Covers all Year 4 topics.</div>
-    <div class="card-tags"><span class="tag free">Free</span><span class="tag pdf-tag">PDF</span><span class="tag worksheets">Worksheets</span></div>
-    <a class="card-link" href="https://thirdspacelearning.com/blog/year-4-maths-worksheets-homework/" target="_blank" rel="noopener">Download Worksheets -</a>
-  </div>
-</div>
-<div class="card" id="sats-papers">
-  <div class="card-icon pdf">-</div>
-  <div class="card-body">
-    <div class="card-title">SATs-Papers.co.uk - Free Past Papers (1999-2026)</div>
-    <div class="card-desc">Complete archive of SATs past papers. While aimed at Year 6, arithmetic sections are excellent stretch practice for confident Year 4 pupils.</div>
-    <div class="card-tags"><span class="tag free">Free</span><span class="tag pdf-tag">PDF</span><span class="tag">1999-2026</span></div>
-    <a class="card-link" href="https://www.sats-papers.co.uk/" target="_blank" rel="noopener">Browse Archive -</a>
-  </div>
-</div>
-<div class="card" id="gov">
-  <div class="card-icon pdf">-</div>
-  <div class="card-body">
-    <div class="card-title">GOV.UK - Official KS2 Mathematics Test Materials 2026</div>
-    <div class="card-desc">The actual 2026 KS2 papers from the Standards and Testing Agency. Includes arithmetic paper, reasoning papers, and mark schemes.</div>
-    <div class="card-tags"><span class="tag free">Free</span><span class="tag pdf-tag">PDF</span><span class="tag gov">Official</span></div>
-    <a class="card-link" href="https://www.gov.uk/government/publications/key-stage-2-tests-2026-mathematics-test-materials" target="_blank" rel="noopener">View Official Materials -</a>
-  </div>
+<!-- Tips -->
+<div class="tip-box" id="tip-box">
+  <h4 id="tip-title">- How to Use These Papers</h4>
+  <ul id="tip-list"></ul>
 </div>
 
-</div></div>
-
-<div class="section"><div class="section-title"><span class="s-dot other"></span> Online Practice & Interactive Games</div>
-<div class="card-grid">
-
-<div class="card" id="mathsframe">
-  <div class="card-icon game">-</div>
-  <div class="card-body">
-    <div class="card-title">Mathsframe - Arithmetic Practice + MTC Simulator</div>
-    <div class="card-desc">Free online arithmetic quiz with timed questions. Includes the Multiplication Tables Check simulator - essential for Year 4 MTC preparation.</div>
-    <div class="card-tags"><span class="tag free">Free</span><span class="tag online-tag">Online</span><span class="tag">Times Tables</span></div>
-    <a class="card-link" href="https://mathsframe.co.uk/en/resources/category/12/latest-resources" target="_blank" rel="noopener">Open Mathsframe -</a>
-  </div>
-</div>
-<div class="card" id="topmarks">
-  <div class="card-icon game">-</div>
-  <div class="card-body">
-    <div class="card-title">Topmarks - Mental Maths Games (Ages 7-11)</div>
-    <div class="card-desc">Hit the Button, Daily 10, Coconut Multiples and more. Great for 5-10 minute daily warm-ups before tackling paper tests.</div>
-    <div class="card-tags"><span class="tag free">Free</span><span class="tag online-tag">Online</span><span class="tag games">Games</span></div>
-    <a class="card-link" href="https://www.topmarks.co.uk/maths-games/7-11-years/mental-maths" target="_blank" rel="noopener">Play Games -</a>
-  </div>
-</div>
-<div class="card" id="bbc">
-  <div class="card-icon game">-</div>
-  <div class="card-body">
-    <div class="card-title">BBC Bitesize - KS2 Maths Arithmetic Practice</div>
-    <div class="card-desc">Teacher-curated quizzes, videos, and step-by-step guides for all KS2 maths topics. Excellent for independent learning.</div>
-    <div class="card-tags"><span class="tag free">Free</span><span class="tag online-tag">Online</span><span class="tag">Videos</span></div>
-    <a class="card-link" href="https://www.bbc.co.uk/bitesize/articles/zrd6mfr" target="_blank" rel="noopener">Start Practice -</a>
-  </div>
-</div>
-<div class="card" id="sats-arcade">
-  <div class="card-icon game">-</div>
-  <div class="card-body">
-    <div class="card-title">SATs Arcade - Free Timed Practice Papers</div>
-    <div class="card-desc">Timed arithmetic practice covering all operations. Clean interface designed for pupil self-practice.</div>
-    <div class="card-tags"><span class="tag free">Free</span><span class="tag online-tag">Online</span></div>
-    <a class="card-link" href="https://www.satsarcade.co.uk/free" target="_blank" rel="noopener">Visit SATs Arcade -</a>
-  </div>
-</div>
-<div class="card" id="primarytools">
-  <div class="card-icon game">-</div>
-  <div class="card-body">
-    <div class="card-title">PrimaryTools - Past Papers with Gap Analysis</div>
-    <div class="card-desc">Free SATs papers (2001-2026) with Question Level Analysis. Identifies exactly which topics need work.</div>
-    <div class="card-tags"><span class="tag free">Free</span><span class="tag online-tag">Online</span><span class="tag">QLA</span></div>
-    <a class="card-link" href="https://www.primarytools.co.uk/" target="_blank" rel="noopener">Explore PrimaryTools -</a>
-  </div>
-</div>
-
-</div></div>
-
-<div class="tip-box">
-  <h4>- How to Use These Papers with Your Daughter</h4>
-  <ul>
-    <li><strong>Start with Summer Test 1 today.</strong> Do it together once so she understands the format. Then she can do them independently.</li>
-    <li><strong>One test per week.</strong> 10 questions takes about 15 minutes. Mark it together and celebrate every improvement.</li>
-    <li><strong>Keep a simple score tracker.</strong> Write the date, test number, and score out of 10. Seeing the line go up is hugely motivating.</li>
-    <li><strong>Use online games between tests.</strong> Topmarks or Mathsframe for 5-10 minutes on non-test days keeps skills sharp.</li>
-    <li><strong>Times tables are the foundation.</strong> Year 4 pupils sit the MTC. Mathsframe's MTC simulator is the best free prep tool.</li>
-    <li><strong>If she struggles with a topic,</strong> use the Third Space Learning worksheets to target that area before the next test.</li>
-  </ul>
-</div>
-
+<!-- Automation footer -->
 <div class="automation-note">
-  <strong>- How the auto-updating works:</strong> A Python scraper runs every Sunday morning, searches UK school websites for new Year 4 PiXL arithmetic papers, verifies them, and updates <code>data/papers.json</code>. This page loads that JSON live - so new papers appear here automatically, no manual edits needed. Last scrape: <span id="auto-last-scrape">-</span>. Content hash: <span id="auto-hash">-</span>.
+  <strong>- How the auto-updating works:</strong> A Python scraper runs every Sunday morning, searches UK school websites for new Year 4 papers, verifies them, and updates <code>data/*.json</code>. This page loads those JSON files live - so new papers appear here automatically. Last scrape: <span id="auto-last-scrape">-</span>. Content hash: <span id="auto-hash">-</span>.
 </div>
 
 </div></div>
 
 <script>
-// ---- Embedded fallback data (in case papers.json can't load) ----
+// ---- State ----
+var currentSubject = 'maths';
+var allData = { maths: null, reading: null, english: null };
 var FALLBACK_DATA = {
-  "metadata": {"lastScraped": "2026-06-06T07:50:00Z", "totalPapers": 20, "verifiedPapers": 13, "contentHash": "fallback"},
-  "papers": [
-    {"url":"https://www.swingate.medway.sch.uk/attachments/download.asp?file=491&type=pdf","name":"Year 4 Arithmetic Test 1","term":"Summer","test_number":1,"school":"Swingate Primary School","verified":true,"size_bytes":349171},
-    {"url":"https://www.swingate.medway.sch.uk/attachments/download.asp?file=492&type=pdf","name":"Year 4 Arithmetic Test 2","term":"Summer","test_number":2,"school":"Swingate Primary School","verified":true,"size_bytes":349784},
-    {"url":"https://www.swingate.medway.sch.uk/attachments/download.asp?file=493&type=pdf","name":"Year 4 Arithmetic Test 3","term":"Summer","test_number":3,"school":"Swingate Primary School","verified":true,"size_bytes":349693},
-    {"url":"https://www.swingate.medway.sch.uk/attachments/download.asp?file=494&type=pdf","name":"Year 4 Arithmetic Test 4","term":"Summer","test_number":4,"school":"Swingate Primary School","verified":true,"size_bytes":350416},
-    {"url":"https://www.swingate.medway.sch.uk/attachments/download.asp?file=495&type=pdf","name":"Year 4 Arithmetic Test 5","term":"Summer","test_number":5,"school":"Swingate Primary School","verified":true,"size_bytes":349379},
-    {"url":"https://www.swingate.medway.sch.uk/attachments/download.asp?file=496&type=pdf","name":"Year 4 Arithmetic Test 6","term":"Summer","test_number":6,"school":"Swingate Primary School","verified":true,"size_bytes":350875},
-    {"url":"https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/484d2e00e5c24553bb764b9b8485654b/year-4-arithmetic-test-4.pdf","name":"PiXL Arithmetic Test 4 (Pack 4)","term":"Summer","test_number":4,"school":"Elfrida Primary School","verified":false},
-    {"url":"https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/866af9690af84c0ab1138f24ed308b35/year-4-arithmetic-test-5.pdf","name":"PiXL Arithmetic Test 5 (Pack 5)","term":"Summer","test_number":5,"school":"Elfrida Primary School","verified":false},
-    {"url":"https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/dce73aa251244fb387c1490fb9fa6be7/year-4-arithmetic-test-6.pdf","name":"PiXL Arithmetic Test 6 (Pack 6)","term":"Summer","test_number":6,"school":"Elfrida Primary School","verified":false},
-    {"url":"https://churchfieldsjunior.com/wp-content/uploads/2020/04/Y4_Arithmetic_Test_10.pdf","name":"Year 4 Arithmetic Test 10","term":"Summer","test_number":10,"school":"Churchfields Junior School","verified":false},
-    {"url":"https://www.primet.lancs.sch.uk/attachments/download.asp?file=2775&type=pdf","name":"Year 4 Arithmetic Set 4","term":"Summer","test_number":4,"school":"Primet Primary School","verified":true,"size_bytes":529269},
-    {"url":"https://corshamregis.wilts.sch.uk/wp-content/uploads/2021/01/Arithmetic-Test-1-Y4-Spring.pdf","name":"Year 4 Arithmetic Test 1","term":"Spring","test_number":1,"school":"Corsham Regis Primary School","verified":true,"size_bytes":346654},
-    {"url":"https://corshamregis.wilts.sch.uk/wp-content/uploads/2021/02/Arithmetic-Test-4-Y4-Spring.pdf","name":"Year 4 Arithmetic Test 4","term":"Spring","test_number":4,"school":"Corsham Regis Primary School","verified":true,"size_bytes":346986},
-    {"url":"https://corshamregis.wilts.sch.uk/wp-content/uploads/2021/02/Arithmetic-Test-5-Y4-Spring.pdf","name":"Year 4 Arithmetic Test 5","term":"Spring","test_number":5,"school":"Corsham Regis Primary School","verified":true,"size_bytes":346838},
-    {"url":"https://www.archbishopcourtenay.org.uk/_site/data/files/migrated/50321/arithmetic-test-7-y4-spring.pdf","name":"Arithmetic Test 7","term":"Spring","test_number":7,"school":"Archbishop Courtenay Primary School","verified":true,"size_bytes":347114},
-    {"url":"https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/9e3f336553a543e0b5646224aaab2500/year-4-arithmetic-test-1.pdf","name":"PiXL Arithmetic Test 1 (Pack 1)","term":"Spring","test_number":1,"school":"Elfrida Primary School","verified":false},
-    {"url":"https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/b740b9e0504840e38d320a3877bf57ba/year-4-arithmetic-test-2.pdf","name":"PiXL Arithmetic Test 2 (Pack 2)","term":"Spring","test_number":2,"school":"Elfrida Primary School","verified":false},
-    {"url":"https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/99ed9745aeb143edbedc70d985fd1b7f/year-4-arithmetic-test-3.pdf","name":"PiXL Arithmetic Test 3 (Pack 3)","term":"Spring","test_number":3,"school":"Elfrida Primary School","verified":false},
-    {"url":"https://www.archbishopcourtenay.org.uk/_site/data/files/migrated/friday---29012021/arithmetic-test-4-y4-autumn.pdf","name":"PiXL Arithmetic Test 4","term":"Autumn","test_number":4,"school":"Archbishop Courtenay Primary School","verified":true,"size_bytes":683619},
-    {"url":"https://www.st-clares.leics.sch.uk/wp-content/uploads/sites/9/2021/02/Year-4-Arithmetic-Tests.pdf","name":"Complete Year 4 Arithmetic Pack (10 tests)","term":"All","test_number":null,"school":"St Clare's Primary School","verified":true,"size_bytes":51421}
-  ]
+  maths: {"metadata":{"lastScraped":"2026-06-06T07:52:19Z","totalPapers":20,"verifiedPapers":13,"unverifiedPapers":7,"brokenPapers":0},"papers":[]},
+  reading: {"metadata":{"lastScraped":"2026-06-06T08:30:00Z","totalPapers":0,"verifiedPapers":0},"papers":[]},
+  english: {"metadata":{"lastScraped":"2026-06-06T08:30:00Z","totalPapers":0,"verifiedPapers":0},"papers":[]}
 };
 
-var allPapers = [];
-var metadata = {};
+// Subject config
+var SUBJECTS = {
+  maths: {
+    file: 'data/maths.json',
+    icon: '-',
+    badge: 'maths',
+    badgeText: 'Maths',
+    heroTitle: '- Year 4 Maths - PiXL Arithmetic & Practice Papers',
+    heroDesc: 'All known free Year 4 maths and arithmetic papers, automatically discovered from UK school websites and verified weekly.',
+    sectionLabel: 'Maths Papers',
+    tipTitle: '- How to Use These Maths Papers',
+    tips: [
+      '<strong>Start with Summer Test 1 today.</strong> Do it together once so she understands the format.',
+      '<strong>One test per week.</strong> 10-15 minutes per test. Mark together and celebrate every improvement.',
+      '<strong>Keep a simple score tracker.</strong> Write date, test number, and score. Seeing the line go up is hugely motivating.',
+      '<strong>Times tables are the foundation.</strong> Year 4 pupils sit the MTC. Mathsframe\'s MTC simulator is the best free prep tool.'
+    ],
+    resources: [
+      {id:'twinkl',icon:'pdf',title:'Twinkl - Year 4 Arithmetic Full Tests Pack',desc:'Six complete Year 4 arithmetic test papers in SATs format with answer sheets.',tags:['Paid/Free Trial','PDF','6 Tests'],link:'https://www.twinkl.co.uk/resource/t2-m-1164-year-4-arithmetic-full-tests'},
+      {id:'salamanders',icon:'pdf',title:'Math Salamanders - Mental Maths Test Year 4',desc:'Free printable worksheets (16 questions each). Covers all four operations, fractions, measurement.',tags:['Free','PDF','Worksheets'],link:'https://www.math-salamanders.com/mental-maths-test.html'},
+      {id:'thirdspace',icon:'pdf',title:'Third Space Learning - Free Year 4 Maths Worksheets',desc:'Curriculum-aligned, teacher-created worksheets using maths mastery approach. White Rose aligned.',tags:['Free','PDF','Worksheets'],link:'https://thirdspacelearning.com/blog/year-4-maths-worksheets-homework/'},
+      {id:'sats-papers',icon:'pdf',title:'SATs-Papers.co.uk - Free Past Papers (1999-2026)',desc:'Complete archive of SATs past papers. Arithmetic sections are excellent stretch practice for confident Year 4 pupils.',tags:['Free','PDF','1999-2026'],link:'https://www.sats-papers.co.uk/'},
+      {id:'gov',icon:'pdf',title:'GOV.UK - Official KS2 Mathematics Test Materials',desc:'The actual KS2 papers from the Standards and Testing Agency. Includes arithmetic, reasoning, and mark schemes.',tags:['Free','PDF','Official'],link:'https://www.gov.uk/government/collections/national-curriculum-assessments-past-test-materials'},
+      {id:'mathsframe',icon:'game',title:'Mathsframe - Arithmetic Practice + MTC Simulator',desc:'Free online arithmetic quiz with timed questions. Includes the Multiplication Tables Check simulator.',tags:['Free','Online','Times Tables'],link:'https://mathsframe.co.uk/en/resources/category/12/latest-resources'},
+      {id:'topmarks',icon:'game',title:'Topmarks - Mental Maths Games (Ages 7-11)',desc:'Hit the Button, Daily 10, Coconut Multiples and more. Great for 5-10 minute daily warm-ups.',tags:['Free','Online','Games'],link:'https://www.topmarks.co.uk/maths-games/7-11-years/mental-maths'}
+    ]
+  },
+  reading: {
+    file: 'data/reading.json',
+    icon: '-',
+    badge: 'reading',
+    badgeText: 'Reading',
+    heroTitle: '- Year 4 Reading - Comprehension & PiXL Reading Papers',
+    heroDesc: 'Free Year 4 reading comprehension papers from UK schools, including PiXL reading packs. Auto-discovered and updated weekly.',
+    sectionLabel: 'Reading Papers',
+    tipTitle: '- How to Use These Reading Papers',
+    tips: [
+      '<strong>Read together first.</strong> Go through the passage together before tackling questions. Discuss unfamiliar words.',
+      '<strong>One paper per week.</strong> Reading tests take 20-30 minutes. Build stamina gradually.',
+      '<strong>Teach the question types.</strong> Retrieval, inference, vocabulary, and prediction - each needs a different approach.',
+      '<strong>Keep a reading journal.</strong> After each test, note 2-3 new words learned. This builds vocabulary for the GPS paper too.'
+    ],
+    resources: [
+      {id:'twinkl-read',icon:'reading',title:'Twinkl - Year 4 Reading Assessments Pack',desc:'Termly reading assessment packs with fiction, non-fiction and poetry. Mark schemes included.',tags:['Paid/Free Trial','PDF','3 Terms'],link:'https://www.twinkl.co.uk/resources/keystage2-ks2-assessment-tests/keystage2-ks2-assessment-tests-reading/keystage2-ks2-assessment-tests-reading-year-4'},
+      {id:'bbc-bitesize-read',icon:'reading',title:'BBC Bitesize - KS2 Comprehension',desc:'Free interactive comprehension activities, videos and guides for Year 4 reading skills.',tags:['Free','Online','Videos'],link:'https://www.bbc.co.uk/bitesize/topics/zs44jxs'},
+      {id:'sats-read',icon:'reading',title:'SATs-Papers.co.uk - Optional Year 4 Reading',desc:'Free optional SATs reading papers with mark schemes. KS2-format practice.',tags:['Free','PDF','Optional SATs'],link:'https://www.sats-papers.co.uk/year-4-sats-papers/'},
+      {id:'gov-read',icon:'reading',title:'GOV.UK - KS2 English Reading Test Materials',desc:'Official 2026 KS2 reading papers. Good stretch practice for confident Year 4 readers.',tags:['Free','PDF','Official'],link:'https://www.gov.uk/government/collections/national-curriculum-assessments-past-test-materials'}
+    ]
+  },
+  english: {
+    file: 'data/english.json',
+    icon: '-',
+    badge: 'english',
+    badgeText: 'English',
+    heroTitle: '- Year 4 English - Grammar, Punctuation & Spelling (GPS)',
+    heroDesc: 'Free Year 4 GPS/SPaG papers from UK schools, including PiXL English packs. Auto-discovered and updated weekly.',
+    sectionLabel: 'English (GPS) Papers',
+    tipTitle: '- How to Use These English Papers',
+    tips: [
+      '<strong>GPS = Grammar, Punctuation & Spelling.</strong> This is tested separately from reading in KS2 SATs.',
+      '<strong>One paper per week.</strong> GPS papers are shorter (15-20 minutes). Great for midweek practice.',
+      '<strong>Focus on the terminology.</strong> Year 4 pupils need to know terms like \'fronted adverbial\', \'possessive pronoun\', \'subordinate clause\'.',
+      '<strong>Keep a spelling log.</strong> Every tricky word goes on a list. Test 5 words a day from the growing list.'
+    ],
+    resources: [
+      {id:'twinkl-spag',icon:'english',title:'Twinkl - Year 4 Grammar & Punctuation Practice Pack',desc:'Full practice tests covering all Year 4 GPS objectives. Mark schemes and editable versions available.',tags:['Paid/Free Trial','PDF','Full Pack'],link:'https://www.twinkl.co.uk/resource/t2-e-1588-year-4-english-grammar-and-punctuation-practice-test-pack'},
+      {id:'bbc-spag',icon:'english',title:'BBC Bitesize - KS2 Grammar & Punctuation',desc:'Free interactive activities, videos and crystal-clear explanations for every GPS topic.',tags:['Free','Online','Videos'],link:'https://www.bbc.co.uk/bitesize/topics/zhrrd2p'},
+      {id:'topmarks-spag',icon:'english',title:'Topmarks - Spelling & Grammar Games',desc:'Free interactive games for spelling patterns, punctuation and grammar. Ages 7-11.',tags:['Free','Online','Games'],link:'https://www.topmarks.co.uk/english-games/7-11-years/spelling-and-grammar'},
+      {id:'gov-spag',icon:'english',title:'GOV.UK - KS2 English GPS Test Materials',desc:'Official 2026 KS2 GPS papers with mark schemes. Excellent stretch practice.',tags:['Free','PDF','Official'],link:'https://www.gov.uk/government/collections/national-curriculum-assessments-past-test-materials'}
+    ]
+  }
+};
 
-// ---- Load data ----
-async function loadData() {
-  try {
-    var resp = await fetch('data/papers.json');
-    if (!resp.ok) throw new Error('Not found');
-    var data = await resp.json();
-    metadata = data.metadata || {};
-    allPapers = data.papers || [];
-    console.log('Loaded', allPapers.length, 'papers from papers.json (hash:', metadata.contentHash, ')');
-  } catch(e) {
-    console.log('Falling back to embedded data:', e.message);
-    metadata = FALLBACK_DATA.metadata;
-    allPapers = FALLBACK_DATA.papers;
+// ---- Data Loading ----
+async function loadAllData() {
+  var subjects = ['maths', 'reading', 'english'];
+  for (var i = 0; i < subjects.length; i++) {
+    var subj = subjects[i];
+    try {
+      var resp = await fetch(SUBJECTS[subj].file);
+      if (!resp.ok) throw new Error('Not found');
+      allData[subj] = await resp.json();
+    } catch(e) {
+      console.log('Falling back for', subj, ':', e.message);
+      allData[subj] = FALLBACK_DATA[subj];
+    }
   }
   render();
 }
@@ -403,7 +409,6 @@ function groupByTerm(papers) {
     if (!groups[t]) groups[t] = [];
     groups[t].push(p);
   });
-  // Sort each group by test_number
   Object.keys(groups).forEach(function(k) {
     groups[k].sort(function(a, b) { return (a.test_number || 99) - (b.test_number || 99); });
   });
@@ -424,29 +429,46 @@ function formatDate(iso) {
   } catch(e) { return iso; }
 }
 
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 // ---- Render ----
 function render() {
-  var groups = groupByTerm(allPapers);
+  var data = allData[currentSubject];
+  if (!data) return;
+  var papers = data.papers || [];
+  var meta = data.metadata || {};
+  var groups = groupByTerm(papers);
   var termOrder = ['Summer', 'Spring', 'Autumn', 'All'];
   var termIcons = { Summer: 'summer', Spring: 'spring', Autumn: 'autumn', All: 'all' };
   var termIds = { Summer: 'summer', Spring: 'spring', Autumn: 'autumn', All: 'all-terms' };
+  var subj = SUBJECTS[currentSubject];
 
-  // Build PiXL sections HTML
+  // Update hero
+  document.getElementById('hero-title').textContent = subj.heroTitle;
+  document.getElementById('hero-desc').textContent = subj.heroDesc;
+  var badgeEl = document.getElementById('badge-subject');
+  badgeEl.textContent = subj.badgeText;
+  badgeEl.className = 'badge ' + subj.badge;
+
+  // Build paper sections
   var html = '';
   termOrder.forEach(function(term) {
-    var papers = groups[term] || [];
-    if (papers.length === 0) return;
+    var termPapers = groups[term] || [];
+    if (termPapers.length === 0) return;
     var label = term === 'All' ? 'All Terms / Full Test Collections' : term + ' Term Papers';
     var dotClass = termIcons[term] || 'other';
     html += '<div class="section" id="' + termIds[term] + '">';
-    html += '<div class="section-title"><span class="s-dot ' + dotClass + '"></span> ' + label + ' (' + papers.length + ' papers)</div>';
+    html += '<div class="section-title"><span class="s-dot ' + dotClass + '"></span> ' + label + ' (' + termPapers.length + ' papers)</div>';
     html += '<table class="test-table"><thead><tr><th>#</th><th>Paper</th><th>Source</th><th>Term</th><th>Status</th><th>Download</th></tr></thead><tbody>';
 
-    papers.forEach(function(p, idx) {
+    termPapers.forEach(function(p, idx) {
       var num = p.test_number || (idx + 1);
       var verifiedIcon = p.verified ? '<span class="verified-dot ok"></span>' : '<span class="verified-dot unverified"></span>';
       var statusText = p.verified ? 'Verified (' + formatSize(p.size_bytes) + ')' : 'Click to try';
-      var statusTitle = p.verified ? 'Scraper verified this PDF is accessible' : (p.note || 'May require browser download');
+      var statusTitle = p.verified ? 'Verified PDF accessible' : (p.note || 'May require browser download');
       html += '<tr>';
       html += '<td class="test-num">#' + num + '</td>';
       html += '<td><span class="test-name">' + esc(p.name) + '</span></td>';
@@ -460,20 +482,56 @@ function render() {
     html += '</tbody></table></div>';
   });
 
-  document.getElementById('piXL-sections').innerHTML = html;
+  if (papers.length === 0) {
+    html = '<div class="empty-state"><div class="empty-icon">-</div><h3>No papers found yet</h3><p>The scraper runs every Sunday. Papers will appear here automatically as they\'re discovered on UK school websites.</p></div>';
+  }
+
+  document.getElementById('paper-sections').innerHTML = html;
+
+  // Build resource cards
+  var resHtml = '<div class="section"><div class="section-title"><span class="s-dot other"></span> More ' + subj.badgeText + ' Resources</div><div class="card-grid">';
+  subj.resources.forEach(function(r) {
+    resHtml += '<div class="card" id="' + r.id + '">';
+    resHtml += '<div class="card-icon ' + r.icon + '">-</div>';
+    resHtml += '<div class="card-body">';
+    resHtml += '<div class="card-title">' + esc(r.title) + '</div>';
+    resHtml += '<div class="card-desc">' + esc(r.desc) + '</div>';
+    resHtml += '<div class="card-tags">';
+    r.tags.forEach(function(t) {
+      var tagClass = 'tag';
+      if (t.toLowerCase().includes('free')) tagClass += ' free';
+      else if (t.toLowerCase().includes('paid')) tagClass += ' paid';
+      else if (t.toLowerCase().includes('pdf')) tagClass += ' pdf-tag';
+      else if (t.toLowerCase().includes('online')) tagClass += ' online-tag';
+      else if (t.toLowerCase().includes('game')) tagClass += ' games';
+      else if (t.toLowerCase().includes('official')) tagClass += ' gov';
+      resHtml += '<span class="' + tagClass + '">' + esc(t) + '</span>';
+    });
+    resHtml += '</div>';
+    resHtml += '<a class="card-link" href="' + esc(r.link) + '" target="_blank" rel="noopener">Open Resource -</a>';
+    resHtml += '</div></div>';
+  });
+  resHtml += '</div></div>';
+  document.getElementById('resource-sections').innerHTML = resHtml;
+
+  // Update tips
+  document.getElementById('tip-title').textContent = subj.tipTitle;
+  var tipHtml = '';
+  subj.tips.forEach(function(t) { tipHtml += '<li>' + t + '</li>'; });
+  document.getElementById('tip-list').innerHTML = tipHtml;
 
   // Update stats
   var totalSummer = (groups['Summer'] || []).length;
   var totalSpring = (groups['Spring'] || []).length;
   var totalAutumn = (groups['Autumn'] || []).length;
   var totalAll = (groups['All'] || []).length;
-  var total = allPapers.length;
-  var verified = allPapers.filter(function(p) { return p.verified; }).length;
+  var total = papers.length;
+  var verified = papers.filter(function(p) { return p.verified; }).length;
 
   document.getElementById('stat-total').textContent = total;
   document.getElementById('stat-verified').textContent = verified;
   document.getElementById('stat-summer').textContent = totalSummer;
-  document.getElementById('stat-updated').textContent = formatDate(metadata.lastScraped);
+  document.getElementById('stat-updated').textContent = formatDate(meta.lastScraped);
 
   // Update nav counts
   document.getElementById('nav-total').textContent = total;
@@ -481,18 +539,57 @@ function render() {
   document.getElementById('nav-spring').textContent = totalSpring;
   document.getElementById('nav-autumn').textContent = totalAutumn;
   document.getElementById('nav-all').textContent = totalAll;
+  document.getElementById('nav-section-label').textContent = subj.sectionLabel;
+
+  // Update resource nav count
+  document.getElementById('nav-resources-count').textContent = subj.resources.length;
+  var resNavHtml = '';
+  subj.resources.forEach(function(r) {
+    resNavHtml += '<a class="nav-link" href="#' + r.id + '">' + esc(r.title) + '</a>';
+  });
+  document.getElementById('nav-resources-subitems').innerHTML = resNavHtml;
 
   // Update sidebar
-  document.getElementById('last-updated-sidebar').textContent = 'Updated ' + formatDate(metadata.lastScraped);
+  document.getElementById('last-updated-sidebar').textContent = 'Updated ' + formatDate(meta.lastScraped);
 
   // Update automation note
-  document.getElementById('auto-last-scrape').textContent = formatDate(metadata.lastScraped);
-  document.getElementById('auto-hash').textContent = metadata.contentHash || '-';
+  document.getElementById('auto-last-scrape').textContent = formatDate(meta.lastScraped);
+  document.getElementById('auto-hash').textContent = meta.contentHash || '-';
+
+  // Update subject tab counts
+  ['maths', 'reading', 'english'].forEach(function(s) {
+    var d = allData[s];
+    var cnt = d ? (d.metadata ? d.metadata.totalPapers : (d.papers ? d.papers.length : 0)) : 0;
+    var el = document.getElementById('count-' + s);
+    if (el) el.textContent = cnt + ' papers';
+    var tel = document.getElementById('tab-count-' + s);
+    if (tel) tel.textContent = cnt + ' papers';
+  });
+
+  // Update existing FALLBACK_DATA for this subject (for JS fallback)
+  FALLBACK_DATA[currentSubject] = data;
 }
 
-function esc(s) {
-  if (!s) return '';
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// ---- Subject switching ----
+function switchSubject(subj) {
+  currentSubject = subj;
+  // Update tab buttons
+  document.querySelectorAll('.subject-btn').forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-subject') === subj);
+  });
+  document.querySelectorAll('.sidebar-tab').forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-subject') === subj);
+  });
+  // Reset scroll position
+  document.getElementById('main').scrollTop = 0;
+  window.scrollTo(0, 0);
+  // Re-render
+  render();
+  updateTermHighlight();
+  // Reset nav active
+  document.querySelectorAll('.nav-link').forEach(function(l) { l.classList.remove('active'); });
+  var first = document.querySelector('.nav-link[href=\"#summer\"]');
+  if (first) first.classList.add('active');
 }
 
 // ---- Sidebar ----
@@ -524,66 +621,33 @@ window.addEventListener('scroll', function() {
   }
 });
 
-// Close sidebar on nav click (mobile)
 document.querySelectorAll('.nav-link').forEach(function(link) {
   link.addEventListener('click', function() { if (window.innerWidth <= 768) closeSidebar(); });
 });
 
-// ---- Init ----
-loadData();
-updateTermHighlight();
-
 // ---- Dynamic term detection ----
 function getUKSchoolTerm() {
   var now = new Date();
-  var month = now.getMonth(); // 0=Jan, 11=Dec
+  var month = now.getMonth();
   var year = now.getFullYear();
   var day = now.getDate();
 
-  // UK primary school terms (approximate - varies slightly by LEA):
-  // Autumn term 1: Sep - Oct half-term (~Oct 20-28)
-  // Autumn term 2: Nov - Christmas (~Dec 18-22)
-  // Spring term 1: Jan - Feb half-term (~Feb 10-18)
-  // Spring term 2: Feb - Easter (~Mar 25-Apr 15)
-  // Summer term 1: Apr - May half-term (~May 25-31)
-  // Summer term 2: Jun - mid/late Jul (~Jul 18-22)
-
   var currentTerm, nextTerm, academicYear;
 
-  if (month >= 8) { // Sep-Dec
+  if (month >= 8) {
     currentTerm = 'Autumn';
     academicYear = year + '-' + (year+1);
-    if (month === 8 && day < 5) {
-      // Still summer holiday - about to start autumn
-      currentTerm = 'Summer (holiday)';
-      nextTerm = 'Autumn';
-    }
-  } else if (month >= 0 && month <= 3) { // Jan-Mar
+    if (month === 8 && day < 5) { currentTerm = 'Summer (holiday)'; nextTerm = 'Autumn'; }
+  } else if (month >= 0 && month <= 3) {
     currentTerm = 'Spring';
     academicYear = (year-1) + '-' + year;
-    if (month === 0 && day < 6) {
-      currentTerm = 'Christmas (holiday)';
-      nextTerm = 'Spring';
-    }
-  } else if (month >= 4 && month <= 7) { // Apr-Jul
-    if (month <= 5 || (month === 6 && day < 25)) {
-      currentTerm = 'Summer';
-    } else {
-      currentTerm = 'Summer (ending soon)';
-    }
+    if (month === 0 && day < 6) { currentTerm = 'Christmas (holiday)'; nextTerm = 'Spring'; }
+  } else if (month >= 4 && month <= 7) {
+    if (month <= 5 || (month === 6 && day < 25)) { currentTerm = 'Summer'; }
+    else { currentTerm = 'Summer (ending soon)'; }
     academicYear = (year-1) + '-' + year;
-    if (month === 4 && day < 16) {
-      currentTerm = 'Easter (holiday)';
-      nextTerm = 'Summer';
-    }
+    if (month === 4 && day < 16) { currentTerm = 'Easter (holiday)'; nextTerm = 'Summer'; }
   }
-
-  // Half-term refinement
-  var halfTermDates = {
-    autumn:  { month: 9,  start: 20, end: 28 },  // Oct
-    spring:  { month: 1,  start: 10, end: 18 },  // Feb
-    summer:  { month: 4,  start: 25, end: 31 },  // May
-  };
 
   return {
     term: currentTerm || 'Unknown',
@@ -599,16 +663,22 @@ function updateTermHighlight() {
   var body = document.getElementById('current-term-body');
 
   var termName = info.term.replace(' (holiday)', '').replace(' (ending soon)', '');
+  var subjectName = SUBJECTS[currentSubject].badgeText;
   var emoji = { Summer: '-', Spring: '-', Autumn: '-', Winter: '-' }[termName] || '-';
 
   if (info.isHoliday) {
     heading.textContent = emoji + ' School Holiday - ' + info.nextTerm + ' Term ' + info.academicYear.split('-')[1] + ' Starts Soon';
-    body.innerHTML = 'Misha is currently on school holiday. The <strong>' + info.nextTerm + ' Term papers</strong> will be the ones to use when school resumes. You can still use the current papers for revision practice. <strong>New papers appear here automatically</strong> as schools publish them.';
+    body.innerHTML = 'Misha is currently on school holiday. The <strong>' + info.nextTerm + ' Term ' + subjectName.toLowerCase() + ' papers</strong> will be the ones to use when school resumes. <strong>New papers appear here automatically</strong> as schools publish them.';
   } else {
     heading.textContent = emoji + ' Currently: ' + info.term + ' Term ' + info.academicYear;
-    body.innerHTML = 'Misha is in the <strong>' + termName.toLowerCase() + ' term</strong> now. Start with the <strong>' + termName + ' Term papers below</strong>. Do one test per week and track the score. Once these feel comfortable, use the other term papers for revision. <strong>New papers appear here automatically</strong> as schools publish them.';
+    body.innerHTML = 'Misha is in the <strong>' + termName.toLowerCase() + ' term</strong> now. Start with the <strong>' + termName + ' Term ' + subjectName.toLowerCase() + ' papers below</strong>. Do one test per week and track the score. <strong>New papers appear here automatically</strong> as schools publish them.';
   }
 }
+
+// ---- Init ----
+loadAllData().then(function() {
+  updateTermHighlight();
+});
 </script>
 </body>
 </html>

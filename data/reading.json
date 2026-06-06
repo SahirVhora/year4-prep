@@ -1,0 +1,162 @@
+{
+  "metadata": {
+    "lastScraped": "2026-06-06T08:30:00Z",
+    "totalPapers": 15,
+    "verifiedPapers": 5,
+    "unverifiedPapers": 10,
+    "brokenPapers": 0,
+    "contentHash": "r4e2a1b7c9f3"
+  },
+  "papers": [
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/3b8ece23ae324e918dcf0e6e6d7f85d1",
+      "name": "PiXL Reading Test (Pack 1)",
+      "term": "Spring",
+      "test_number": 1,
+      "school": "Elfrida Primary School - PiXL",
+      "source": "known",
+      "verified": false,
+      "note": "Browser download only (S3/CloudFront restriction)"
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/2898d0b6c7d2479c815f0fcca2425008",
+      "name": "PiXL Reading Test (Pack 2)",
+      "term": "Spring",
+      "test_number": 2,
+      "school": "Elfrida Primary School - PiXL",
+      "source": "known",
+      "verified": false,
+      "note": "Browser download only (S3/CloudFront restriction)"
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/e78983a45f884482bf74b526a075bd43",
+      "name": "PiXL Reading Test (Pack 3)",
+      "term": "Spring",
+      "test_number": 3,
+      "school": "Elfrida Primary School - PiXL",
+      "source": "known",
+      "verified": false,
+      "note": "Browser download only (S3/CloudFront restriction)"
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/3fec87537c4a46a892d0ca7e60d469d7",
+      "name": "PiXL Reading Test (Pack 4)",
+      "term": "Summer",
+      "test_number": 4,
+      "school": "Elfrida Primary School - PiXL",
+      "source": "known",
+      "verified": false,
+      "note": "Browser download only (S3/CloudFront restriction)"
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/416ddbf592b24f3dae49e0e62d9d44dc",
+      "name": "PiXL Reading Test (Pack 5)",
+      "term": "Summer",
+      "test_number": 5,
+      "school": "Elfrida Primary School - PiXL",
+      "source": "known",
+      "verified": false,
+      "note": "Browser download only (S3/CloudFront restriction)"
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/7ae82fb79e434918b915704955a2d616",
+      "name": "PiXL Reading Test (Pack 6)",
+      "term": "Summer",
+      "test_number": 6,
+      "school": "Elfrida Primary School - PiXL",
+      "source": "known",
+      "verified": false,
+      "note": "Browser download only (S3/CloudFront restriction)"
+    },
+    {
+      "url": "https://westend.lancs.sch.uk/wp-content/uploads/2020/03/yr4_comp_v2-1.pdf",
+      "name": "Year 4 Reading Comprehension v2-1",
+      "term": "Spring",
+      "test_number": 1,
+      "school": "West End Primary School",
+      "source": "search",
+      "size_bytes": 3068207,
+      "verified": true
+    },
+    {
+      "url": "https://millbrookprimaryknowsley.co.uk/wp-content/uploads/2024/11/Y4-Reading-Assessment.pdf",
+      "name": "Year 4 Reading Assessment",
+      "term": "Autumn",
+      "test_number": null,
+      "school": "Millbrook Primary School",
+      "source": "search",
+      "size_bytes": 165205,
+      "verified": true
+    },
+    {
+      "url": "https://www.milvertonprimaryschool.co.uk/uploads/6/8/5/7/68571059/web_yr_4_reading_assessment.pdf",
+      "name": "Year 4 Reading Assessment",
+      "term": "All",
+      "test_number": null,
+      "school": "Milverton Primary School",
+      "source": "search",
+      "size_bytes": 217133,
+      "verified": true
+    },
+    {
+      "url": "https://www.highfieldprimary.co.uk/wp-content/uploads/2021/04/Year-4-Reading-Assessment.pdf",
+      "name": "Year 4 Reading Assessment",
+      "term": "Spring",
+      "test_number": null,
+      "school": "Highfield Primary School",
+      "source": "search",
+      "size_bytes": 115924,
+      "verified": true
+    },
+    {
+      "url": "https://coleridgeprimary.net/wp-content/uploads/2020/03/Y4-Reading-Answer-Booklet.pdf",
+      "name": "Year 4 Reading Answer Booklet",
+      "term": "Spring",
+      "test_number": null,
+      "school": "Coleridge Primary School",
+      "source": "search",
+      "size_bytes": 306635,
+      "verified": true
+    },
+    {
+      "url": "https://www.abbotshall.suffolk.sch.uk/_site/data/files/users/22/files/B858659BC75CE681FBD4D19F25D89BCC.pdf",
+      "name": "Year 4 Reading Comprehension",
+      "term": "Summer",
+      "test_number": null,
+      "school": "Abbot's Hall Primary School",
+      "source": "search",
+      "size_bytes": 148870,
+      "verified": true
+    },
+    {
+      "url": "https://www.buckstones.oldham.sch.uk/wp-content/uploads/2020/05/Questions.pdf",
+      "name": "Year 4 Reading Questions",
+      "term": "Summer",
+      "test_number": null,
+      "school": "Buckstones Primary School",
+      "source": "search",
+      "size_bytes": 53254,
+      "verified": true
+    },
+    {
+      "url": "https://corshamregis.wilts.sch.uk/wp-content/uploads/2021/01/Reading-Test-1-Y4-Spring.pdf",
+      "name": "Year 4 Reading Test 1 (Spring)",
+      "term": "Spring",
+      "test_number": 1,
+      "school": "Corsham Regis Primary School",
+      "source": "search",
+      "verified": false,
+      "note": "Inferred URL - may need verification"
+    },
+    {
+      "url": "https://www.leysprimaryschool.com/year-4-15/",
+      "name": "Year 4 Reading Resources Page",
+      "term": "All",
+      "test_number": null,
+      "school": "Leys Primary School",
+      "source": "search",
+      "verified": false,
+      "note": "Resource page with links - not a direct PDF"
+    }
+  ]
+}

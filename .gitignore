@@ -1,3 +1,6 @@
 *.json
+!data/maths.json
+!data/reading.json
+!data/english.json
 !data/papers.json
 !package.json
