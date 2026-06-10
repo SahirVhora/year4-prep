@@ -133,6 +133,13 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
 .highlight-box { background: var(--amber-bg); border: 1px solid rgba(251,191,36,0.2); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 24px; }
 .highlight-box h4 { font-size: 13px; font-weight: 600; color: var(--amber); margin-bottom: 6px; }
 .highlight-box p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+.planner-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.planner-btn{border:1px solid var(--border);background:var(--bg3);color:var(--accent2);border-radius:var(--radius-sm);padding:8px 12px;font-size:12px;font-weight:600;cursor:pointer}
+.planner-btn:hover{background:var(--bg4);border-color:rgba(200,168,78,0.4)}
+.weekly-pack{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:24px}
+.weekly-pack h3{font-size:15px;margin-bottom:8px;color:var(--accent2)}
+.weekly-pack ol{padding-left:20px}
+.weekly-pack li{font-size:12px;color:var(--text2);margin-bottom:6px}
 
 /* Sections */
 .section { margin-bottom: 36px; }
@@ -222,7 +229,7 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
   .test-table th, .test-table td { padding: 8px 6px; }
 }
 @media print {
-  #sidebar, #hamburger, #overlay, .subject-bar { display: none; }
+  #sidebar, #hamburger, #overlay, .subject-bar, .planner-actions { display: none; }
   #main { margin-left: 0; }
   body { background: #fff; color: #000; }
   .card, .test-table tr { break-inside: avoid; }
@@ -307,7 +314,13 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
 <div class="highlight-box" id="current-term-box">
   <h4 id="current-term-heading">- Loading...</h4>
   <p id="current-term-body">Checking current term...</p>
+  <div class="planner-actions">
+    <button class="planner-btn" onclick="scrollToCurrentTermPack()">Show this term's weekly pack</button>
+    <button class="planner-btn" onclick="window.print()">Print weekly pack</button>
+  </div>
 </div>
+
+<div id="weekly-pack"></div>
 
 <div class="stats-bar" id="stats-bar">
   <div class="stat"><span class="stat-icon">-</span><div><div class="stat-count" id="stat-total">-</div><div class="stat-label">Total Papers</div></div></div>
@@ -522,6 +535,7 @@ function render() {
   }
 
   document.getElementById('paper-sections').innerHTML = html;
+  renderWeeklyPack(papers);
 
   // Build resource cards
   var resHtml = '<div class="section"><div class="section-title"><span class="s-dot other"></span> More ' + subj.badgeText + ' Resources</div><div class="card-grid">';
@@ -603,6 +617,42 @@ function render() {
 
   // Update existing FALLBACK_DATA for this subject (for JS fallback)
   FALLBACK_DATA[currentSubject] = data;
+}
+
+function normalTermName(term) {
+  return String(term || '').replace(' (holiday)', '').replace(' (ending soon)', '');
+}
+
+function currentTermPapers(papers) {
+  var info = getUKSchoolTerm();
+  var termName = normalTermName(info.nextTerm || info.term);
+  var matches = papers.filter(function(p) { return p.term === termName; });
+  if (matches.length === 0) matches = papers.filter(function(p) { return p.term !== 'All'; });
+  if (matches.length === 0) matches = papers;
+  return matches.slice(0, 6);
+}
+
+function renderWeeklyPack(papers) {
+  var pack = currentTermPapers(papers);
+  var info = getUKSchoolTerm();
+  var termName = normalTermName(info.nextTerm || info.term);
+  var html = '<div class="weekly-pack" id="current-weekly-pack"><h3>' + esc(termName) + ' term weekly printable pack</h3>';
+  if (!pack.length) {
+    html += '<p style="font-size:12px;color:var(--text3)">No papers available yet for this subject.</p></div>';
+    document.getElementById('weekly-pack').innerHTML = html;
+    return;
+  }
+  html += '<p style="font-size:12px;color:var(--text2);margin-bottom:8px">Auto-selected for the current school term. Print this page or open each PDF for a 6 week practice routine.</p><ol>';
+  pack.forEach(function(p, idx) {
+    html += '<li><strong>Week ' + (idx + 1) + ':</strong> <a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.name) + '</a> <span style="color:var(--text3)">(' + esc(p.school || p.term || '') + ')</span></li>';
+  });
+  html += '</ol><p style="font-size:11px;color:var(--text3);margin-top:8px">Suggested rhythm: 10 minute warm-up, paper attempt, parent mark, note one topic to revisit.</p></div>';
+  document.getElementById('weekly-pack').innerHTML = html;
+}
+
+function scrollToCurrentTermPack() {
+  var el = document.getElementById('current-weekly-pack');
+  if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 // ---- Subject switching ----
@@ -697,7 +747,7 @@ function updateTermHighlight() {
   var heading = document.getElementById('current-term-heading');
   var body = document.getElementById('current-term-body');
 
-  var termName = info.term.replace(' (holiday)', '').replace(' (ending soon)', '');
+  var termName = normalTermName(info.term);
   var subjectName = SUBJECTS[currentSubject].badgeText;
   var emoji = { Summer: '-', Spring: '-', Autumn: '-', Winter: '-' }[termName] || '-';
 
