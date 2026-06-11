@@ -77,3 +77,13 @@ Papers are discovered from UK primary school websites including:
 ---
 
 *Papers are automatically discovered from publicly accessible school websites. No copyrighted content is hosted on this site - all links point to the original school websites where the papers were published. This is a parent-built resource, not affiliated with any school or exam board.*
+
+---
+
+## More free learning tools
+
+- [StarLearn](https://sahirvhora.github.io/starlearn/) - Free UK primary learning platform - Years 4-6, 494 topics
+- [Worksheet Generator](https://sahirvhora.github.io/worksheet-generator/) - Printable SATs-style worksheets - KS1/KS2 Maths, Reading, SPaG
+- [PassMate UK](https://sahirvhora.github.io/passmate-uk/) - Free UK car theory test practice - 304 questions, works offline
+- [11+ Prep](https://sahirvhora.github.io/11plus-prep/) - Free 11+ exam practice - region-specific papers
+- [Nobel Explorer](https://sahirvhora.github.io/nobel-explorer/) - Explore 1,026 Nobel laureates - search, timeline, map, quiz
