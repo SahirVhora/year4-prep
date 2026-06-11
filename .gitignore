@@ -1,6 +1,10 @@
-*.json
-!data/maths.json
-!data/reading.json
-!data/english.json
-!data/papers.json
-!package.json
+1|*.json
+2|!data/maths.json
+3|!data/reading.json
+4|!data/english.json
+5|!data/papers.json
+6|!package.json
+7|
+node_modules/
+__pycache__/
+venv/

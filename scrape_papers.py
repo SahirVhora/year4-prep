@@ -131,8 +131,8 @@ def search_ddgs(query, max_results=8):
         )
         if result.returncode == 0 and result.stdout.strip():
             return json.loads(result.stdout)
-    except (subprocess.TimeoutExpired, FileNotFoundError, json.JSONDecodeError):
-        pass
+    except (subprocess.TimeoutExpired, FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"  DDGS search warning: {e}", file=sys.stderr)
     return []
 
 
@@ -346,8 +346,10 @@ def main():
 
     # Write
     os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
-    with open(OUTPUT_FILE, "w") as f:
-        json.dump(output, f, indent=2, default=str)
+    tmp_path = OUTPUT_FILE.with_suffix(".json.tmp") if hasattr(OUTPUT_FILE, 'with_suffix') else Path(str(OUTPUT_FILE) + ".tmp")
+    with open(tmp_path, "w") as f:
+        json.dump(all_papers, f, indent=2)
+    tmp_path.replace(OUTPUT_FILE)
 
     print()
     print(f"=== Done ===")
