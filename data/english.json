@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "lastScraped": "2026-06-06T11:00:00Z",
-    "totalPapers": 15,
-    "verifiedPapers": 15,
+    "lastScraped": "2026-06-21T07:06:15Z",
+    "totalPapers": 21,
+    "verifiedPapers": 21,
     "unverifiedPapers": 0,
     "brokenPapers": 0,
-    "contentHash": "11589337adc7"
+    "contentHash": "548f90930631"
   },
   "papers": [
     {
@@ -156,6 +156,66 @@
       "school": "Pearson Pinpoint",
       "source": "search",
       "size_bytes": 1660686,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/5a8be124651f4923a686a17654d00125/year-4-week-1-gps-pdf.pdf",
+      "name": "Year 4 Week 1 GPS PDF",
+      "term": "Unknown",
+      "test_number": 1,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 596622,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/25d393e0d1a2412ea4426735c0f7aa56/year-4-week-2-gps-pdf.pdf",
+      "name": "Year 4 Week 2 GPS PDF",
+      "term": "Unknown",
+      "test_number": 2,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 608350,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/ee73d43556284ac39fecb5b6d5965dac/year-4-week-3-gps-pdf.pdf",
+      "name": "Year 4 Week 3 GPS PDF",
+      "term": "Unknown",
+      "test_number": 3,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 610408,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/f0c6948a4a6b4598a4cdb24e705877f6/year-4-week-4-gps-pdf.pdf",
+      "name": "Year 4 Week 4 GPS PDF",
+      "term": "Unknown",
+      "test_number": 4,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 600535,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/7fa3c5aa0c16404fa0c4f792dae67816/year-4-week-5-gps-pdf.pdf",
+      "name": "Year 4 Week 5 GPS PDF",
+      "term": "Unknown",
+      "test_number": 5,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 598824,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/cb76ff18684642829c805e0999fead04/year-4-week-6-gps-pdf.pdf",
+      "name": "Year 4 Week 6 GPS PDF",
+      "term": "Unknown",
+      "test_number": 6,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 600688,
       "verified": true
     }
   ]

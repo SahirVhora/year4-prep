@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "lastScraped": "2026-06-06T11:00:00Z",
-    "totalPapers": 7,
-    "verifiedPapers": 7,
+    "lastScraped": "2026-06-21T07:06:15Z",
+    "totalPapers": 13,
+    "verifiedPapers": 13,
     "unverifiedPapers": 0,
     "brokenPapers": 0,
-    "contentHash": "a6aa5521263d"
+    "contentHash": "13dffb2695ea"
   },
   "papers": [
     {
@@ -76,6 +76,66 @@
       "school": "Buckstones Primary School",
       "source": "search",
       "size_bytes": 53254,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/3b8ece23ae324e918dcf0e6e6d7f85d1/year-4-week-1-reading-pdf.pdf",
+      "name": "Year 4 Week 1 Reading PDF",
+      "term": "Unknown",
+      "test_number": 1,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 589423,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/2898d0b6c7d2479c815f0fcca2425008/year-4-week-2-reading-pdf.pdf",
+      "name": "Year 4 Week 2 Reading PDF",
+      "term": "Unknown",
+      "test_number": 2,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 599949,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/e78983a45f884482bf74b526a075bd43/year-4-week-3-reading-pdf.pdf",
+      "name": "Year 4 Week 3 Reading PDF",
+      "term": "Unknown",
+      "test_number": 3,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 596327,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/3fec87537c4a46a892d0ca7e60d469d7/year-4-week-4-reading-pdf.pdf",
+      "name": "Year 4 Week 4 Reading PDF",
+      "term": "Unknown",
+      "test_number": 4,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 582909,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/416ddbf592b24f3dae49e0e62d9d44dc/year-4-week-5-reading-pdf.pdf",
+      "name": "Year 4 Week 5 Reading PDF",
+      "term": "Unknown",
+      "test_number": 5,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 602653,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/7ae82fb79e434918b915704955a2d616/year-4-week-6-reading-pdf.pdf",
+      "name": "Year 4 Week 6 Reading PDF",
+      "term": "Unknown",
+      "test_number": 6,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 586196,
       "verified": true
     }
   ]

@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "lastScraped": "2026-06-06T11:00:00Z",
-    "totalPapers": 14,
-    "verifiedPapers": 14,
+    "lastScraped": "2026-06-21T07:06:15Z",
+    "totalPapers": 26,
+    "verifiedPapers": 26,
     "unverifiedPapers": 0,
     "brokenPapers": 0,
-    "contentHash": "eb573ffccac6"
+    "contentHash": "59dd4368aef9"
   },
   "papers": [
     {
@@ -146,6 +146,126 @@
       "school": "St Clare's Primary School",
       "source": "known",
       "size_bytes": 51421,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/9e3f336553a543e0b5646224aaab2500/year-4-arithmetic-test-1.pdf",
+      "name": "Year 4 Arithmetic Test 1",
+      "term": "Unknown",
+      "test_number": 1,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 350122,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/742d0eb52ef644a49138254f7ac2bd25/year-4-week-1-maths-pdf.pdf",
+      "name": "Year 4 Week 1 Maths PDF",
+      "term": "Unknown",
+      "test_number": 1,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 640979,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/b740b9e0504840e38d320a3877bf57ba/year-4-arithmetic-test-2.pdf",
+      "name": "Year 4 Arithmetic Test 2",
+      "term": "Unknown",
+      "test_number": 2,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 349286,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/3552ec859a2f4bd9b6c6917ecc926f67/year-4-week-2-maths-pdf.pdf",
+      "name": "Year 4 Week 2 Maths PDF",
+      "term": "Unknown",
+      "test_number": 2,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 562459,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/99ed9745aeb143edbedc70d985fd1b7f/year-4-arithmetic-test-3.pdf",
+      "name": "Year 4 Arithmetic Test 3",
+      "term": "Unknown",
+      "test_number": 3,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 348747,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/804f466818a14d2587a33c0299f8b125/year-4-week-3-maths-pdf.pdf",
+      "name": "Year 4 Week 3 Maths PDF",
+      "term": "Unknown",
+      "test_number": 3,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 573407,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/484d2e00e5c24553bb764b9b8485654b/year-4-arithmetic-test-4.pdf",
+      "name": "Year 4 Arithmetic Test 4",
+      "term": "Unknown",
+      "test_number": 4,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 350094,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/4125de0ae63642319890e8229b4c0184/year-4-week-4-maths-pdf.pdf",
+      "name": "Year 4 Week 4 Maths PDF",
+      "term": "Unknown",
+      "test_number": 4,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 695459,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/866af9690af84c0ab1138f24ed308b35/year-4-arithmetic-test-5.pdf",
+      "name": "Year 4 Arithmetic Test 5",
+      "term": "Unknown",
+      "test_number": 5,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 350875,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/5f78d96d24634297b7ec71ac574ac7da/year-4-week-5-maths-pdf.pdf",
+      "name": "Year 4 Week 5 Maths PDF",
+      "term": "Unknown",
+      "test_number": 5,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 453334,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/dce73aa251244fb387c1490fb9fa6be7/year-4-arithmetic-test-6.pdf",
+      "name": "Year 4 Arithmetic Test 6",
+      "term": "Unknown",
+      "test_number": 6,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 349171,
+      "verified": true
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/6d8fd3ddde4d498d807d2181b1c2ccc5/year-4-week-6-maths-pdf.pdf",
+      "name": "Year 4 Week 6 Maths PDF",
+      "term": "Unknown",
+      "test_number": 6,
+      "school": "Elfrida Primary School",
+      "source": "elfrida-pixl-pack",
+      "size_bytes": 581045,
       "verified": true
     }
   ]
