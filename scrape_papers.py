@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
 Weekly scraper: discovers Year 4 PiXL arithmetic test PDFs from UK school websites.
-Outputs data/papers.json consumed by index.html.
+Outputs data/maths.json consumed by index.html.
 
 Run:  python3 scrape_papers.py
-Cron: 0 8 * * 0  cd ~/projects/uk-education/year4-arithmetic && python3 scrape_papers.py
+Cron: 0 8 * * 0  cd ~/projects/uk-education/year4-prep && python3 scrape_papers.py
 """
 
 import json
@@ -18,7 +18,7 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
 # --- Config ---
-OUTPUT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "papers.json")
+OUTPUT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "maths.json")
 SEARCH_DELAY = 2  # seconds between searches
 REQUEST_TIMEOUT = 15
 USER_AGENT = "Mozilla/5.0 (compatible; Year4ArithmeticScraper/1.0; +https://github.com/SahirVhora)"
@@ -261,6 +261,20 @@ def main():
     print(f"=== PiXL Year 4 Paper Scraper ===  {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
     print()
 
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    # Load existing data to preserve first_seen dates
+    existing_by_url = {}
+    if os.path.exists(OUTPUT_FILE):
+        try:
+            with open(OUTPUT_FILE) as f:
+                existing = json.load(f)
+            for p in existing.get("papers", []):
+                existing_by_url[p["url"]] = p
+            print(f"  Loaded {len(existing_by_url)} existing papers from {OUTPUT_FILE}")
+        except Exception as e:
+            print(f"  Warning: could not load existing data: {e}")
+
     all_papers = []
 
     # 1. Known sources (fast, reliable)
@@ -291,17 +305,28 @@ def main():
     verified = []
     unverified = []
     broken = []
+    new_count = 0
     for i, paper in enumerate(all_papers):
         print(f"  [{i+1}/{len(all_papers)}] {paper['name'][:60]}...", end=" ")
         referer = paper.pop("_referer", None)
+
+        # Preserve or set first_seen
+        existing = existing_by_url.get(paper["url"])
+        if existing and existing.get("first_seen"):
+            paper["first_seen"] = existing["first_seen"]
+        else:
+            paper["first_seen"] = today
+            new_count += 1
+
         result = verify_pdf(paper["url"], referer=referer)
         if result["status"] == "ok":
             paper["size_bytes"] = result["size"]
             paper["verified"] = True
             verified.append(paper)
-            print(f"OK ({result['size']:,} bytes)")
+            is_new = paper["first_seen"] == today
+            print(f"OK ({result['size']:,} bytes){' [NEW]' if is_new else ''}")
         elif "403" in str(result.get("error", "")) or "Forbidden" in str(result.get("error", "")):
-            # S3/CloudFront often blocks non-browser requests but links work in browsers
+            # S3/CloudFront blocks non-browser requests but links work in browsers
             paper["verified"] = False
             paper["error"] = result["error"]
             paper["note"] = "May require browser download (S3/CloudFront restriction)"
@@ -336,6 +361,7 @@ def main():
             "verifiedPapers": len(verified),
             "unverifiedPapers": len(unverified),
             "brokenPapers": len(broken),
+            "newPapers": new_count,
             "contentHash": content_hash,
         },
         "papers": all_good,
@@ -344,18 +370,19 @@ def main():
     if broken:
         output["broken"] = broken
 
-    # Write
+    # Atomic write
     os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
-    tmp_path = OUTPUT_FILE.with_suffix(".json.tmp") if hasattr(OUTPUT_FILE, 'with_suffix') else Path(str(OUTPUT_FILE) + ".tmp")
+    tmp_path = OUTPUT_FILE + ".tmp"
     with open(tmp_path, "w") as f:
-        json.dump(all_papers, f, indent=2)
-    tmp_path.replace(OUTPUT_FILE)
+        json.dump(output, f, indent=2)
+    os.replace(tmp_path, OUTPUT_FILE)
 
     print()
     print(f"=== Done ===")
     print(f"  Verified:   {len(verified)} papers")
     print(f"  Unverified: {len(unverified)} papers (browser-only)")
-    print(f"  Broken:     {len(broken)} papers")
+    print(f"  Broken:     {len(broken)} papers (removed from output)")
+    print(f"  New today:  {new_count} papers")
     print(f"  Output:     {OUTPUT_FILE}")
     print(f"  Hash:       {content_hash}")
 

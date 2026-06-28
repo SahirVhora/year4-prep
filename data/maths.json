@@ -16,7 +16,8 @@
       "school": "Swingate Primary School",
       "source": "known",
       "size_bytes": 349171,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://www.swingate.medway.sch.uk/attachments/download.asp?file=492&type=pdf",
@@ -26,7 +27,8 @@
       "school": "Swingate Primary School",
       "source": "known",
       "size_bytes": 349784,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://www.swingate.medway.sch.uk/attachments/download.asp?file=493&type=pdf",
@@ -36,7 +38,8 @@
       "school": "Swingate Primary School",
       "source": "known",
       "size_bytes": 349693,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://www.swingate.medway.sch.uk/attachments/download.asp?file=494&type=pdf",
@@ -46,7 +49,8 @@
       "school": "Swingate Primary School",
       "source": "known",
       "size_bytes": 350416,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://www.swingate.medway.sch.uk/attachments/download.asp?file=495&type=pdf",
@@ -56,7 +60,8 @@
       "school": "Swingate Primary School",
       "source": "known",
       "size_bytes": 349379,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://www.swingate.medway.sch.uk/attachments/download.asp?file=496&type=pdf",
@@ -66,7 +71,8 @@
       "school": "Swingate Primary School",
       "source": "known",
       "size_bytes": 350875,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://churchfieldsjunior.com/wp-content/uploads/2020/04/Y4_Arithmetic_Test_10.pdf",
@@ -76,7 +82,8 @@
       "school": "Churchfields Junior School",
       "source": "known",
       "verified": true,
-      "size_bytes": 344581
+      "size_bytes": 344581,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://www.primet.lancs.sch.uk/attachments/download.asp?file=2775&type=pdf",
@@ -86,7 +93,8 @@
       "school": "Primet Primary School",
       "source": "known",
       "size_bytes": 529269,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://corshamregis.wilts.sch.uk/wp-content/uploads/2021/01/Arithmetic-Test-1-Y4-Spring.pdf",
@@ -96,7 +104,8 @@
       "school": "Corsham Regis Primary School",
       "source": "known",
       "size_bytes": 346654,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://corshamregis.wilts.sch.uk/wp-content/uploads/2021/02/Arithmetic-Test-4-Y4-Spring.pdf",
@@ -106,7 +115,8 @@
       "school": "Corsham Regis Primary School",
       "source": "known",
       "size_bytes": 346986,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://corshamregis.wilts.sch.uk/wp-content/uploads/2021/02/Arithmetic-Test-5-Y4-Spring.pdf",
@@ -116,7 +126,8 @@
       "school": "Corsham Regis Primary School",
       "source": "known",
       "size_bytes": 346838,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://www.archbishopcourtenay.org.uk/_site/data/files/migrated/50321/arithmetic-test-7-y4-spring.pdf",
@@ -126,7 +137,8 @@
       "school": "Archbishop Courtenay Primary School",
       "source": "known",
       "size_bytes": 347114,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://www.archbishopcourtenay.org.uk/_site/data/files/migrated/friday---29012021/arithmetic-test-4-y4-autumn.pdf",
@@ -136,7 +148,8 @@
       "school": "Archbishop Courtenay Primary School",
       "source": "known",
       "size_bytes": 683619,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://www.st-clares.leics.sch.uk/wp-content/uploads/sites/9/2021/02/Year-4-Arithmetic-Tests.pdf",
@@ -146,7 +159,8 @@
       "school": "St Clare's Primary School",
       "source": "known",
       "size_bytes": 51421,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/9e3f336553a543e0b5646224aaab2500/year-4-arithmetic-test-1.pdf",
@@ -156,7 +170,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 350122,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/742d0eb52ef644a49138254f7ac2bd25/year-4-week-1-maths-pdf.pdf",
@@ -166,7 +181,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 640979,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/b740b9e0504840e38d320a3877bf57ba/year-4-arithmetic-test-2.pdf",
@@ -176,7 +192,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 349286,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/3552ec859a2f4bd9b6c6917ecc926f67/year-4-week-2-maths-pdf.pdf",
@@ -186,7 +203,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 562459,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/99ed9745aeb143edbedc70d985fd1b7f/year-4-arithmetic-test-3.pdf",
@@ -196,7 +214,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 348747,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/804f466818a14d2587a33c0299f8b125/year-4-week-3-maths-pdf.pdf",
@@ -206,7 +225,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 573407,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/484d2e00e5c24553bb764b9b8485654b/year-4-arithmetic-test-4.pdf",
@@ -216,7 +236,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 350094,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/4125de0ae63642319890e8229b4c0184/year-4-week-4-maths-pdf.pdf",
@@ -226,7 +247,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 695459,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/866af9690af84c0ab1138f24ed308b35/year-4-arithmetic-test-5.pdf",
@@ -236,7 +258,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 350875,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/5f78d96d24634297b7ec71ac574ac7da/year-4-week-5-maths-pdf.pdf",
@@ -246,7 +269,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 453334,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/dce73aa251244fb387c1490fb9fa6be7/year-4-arithmetic-test-6.pdf",
@@ -256,7 +280,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 349171,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/6d8fd3ddde4d498d807d2181b1c2ccc5/year-4-week-6-maths-pdf.pdf",
@@ -266,7 +291,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 581045,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     }
   ]
 }

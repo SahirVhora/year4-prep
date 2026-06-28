@@ -171,6 +171,7 @@ a:hover { color: #e0c868; text-decoration: underline; }
 .verified-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 4px; }
 .verified-dot.ok { background: var(--green); }
 .verified-dot.unverified { background: var(--amber); }
+.new-badge { display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: 9px; font-weight: 700; background: var(--green-bg); color: var(--green); border: 1px solid rgba(52,211,153,0.3); margin-left: 5px; letter-spacing: 0.3px; text-transform: uppercase; vertical-align: middle; }
 
 /* Resource cards */
 .card-grid { display: flex; flex-direction: column; gap: 10px; }
@@ -515,19 +516,29 @@ function render() {
     var dotClass = termIcons[term] || 'other';
     html += '<div class="section" id="' + termIds[term] + '">';
     html += '<div class="section-title"><span class="s-dot ' + dotClass + '"></span> ' + label + ' (' + termPapers.length + ' papers)</div>';
-    html += '<table class="test-table"><thead><tr><th>#</th><th>Paper</th><th>Source</th><th>Term</th><th>Status</th><th>Download</th></tr></thead><tbody>';
+    html += '<table class="test-table"><thead><tr><th>#</th><th>Paper</th><th>Source</th><th>Term</th><th>Status</th><th>Added</th><th>Download</th></tr></thead><tbody>';
 
+    var nowMs = Date.now();
     termPapers.forEach(function(p, idx) {
       var num = p.test_number || (idx + 1);
       var verifiedIcon = p.verified ? '<span class="verified-dot ok"></span>' : '<span class="verified-dot unverified"></span>';
       var statusText = p.verified ? 'Verified (' + formatSize(p.size_bytes) + ')' : 'Click to try';
       var statusTitle = p.verified ? 'Verified PDF accessible' : (p.note || 'May require browser download');
+      var firstSeen = p.first_seen || '';
+      var isNew = false;
+      var addedText = '-';
+      if (firstSeen) {
+        var addedMs = new Date(firstSeen).getTime();
+        isNew = (nowMs - addedMs) < 7 * 24 * 60 * 60 * 1000;
+        addedText = firstSeen;
+      }
       html += '<tr>';
       html += '<td class="test-num">#' + num + '</td>';
-      html += '<td><span class="test-name">' + esc(p.name) + '</span></td>';
+      html += '<td><span class="test-name">' + esc(p.name) + '</span>' + (isNew ? '<span class="new-badge">New</span>' : '') + '</td>';
       html += '<td><span class="test-source">' + esc(p.school || '') + '</span></td>';
       html += '<td><span class="term-badge ' + dotClass + '">' + term + '</span></td>';
       html += '<td style="font-size:11px;color:var(--text3)" title="' + esc(statusTitle) + '">' + verifiedIcon + statusText + '</td>';
+      html += '<td style="font-size:11px;color:var(--text3)">' + esc(addedText) + '</td>';
       html += '<td class="test-link"><a href="' + esc(p.url) + '" target="_blank" rel="noopener">Download PDF -</a></td>';
       html += '</tr>';
     });
