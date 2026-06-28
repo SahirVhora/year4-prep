@@ -16,7 +16,8 @@
       "school": "West End Primary School",
       "source": "search",
       "size_bytes": 3068207,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://millbrookprimaryknowsley.co.uk/wp-content/uploads/2024/11/Y4-Reading-Assessment.pdf",
@@ -26,7 +27,8 @@
       "school": "Millbrook Primary School",
       "source": "search",
       "size_bytes": 165205,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://www.milvertonprimaryschool.co.uk/uploads/6/8/5/7/68571059/web_yr_4_reading_assessment.pdf",
@@ -36,7 +38,8 @@
       "school": "Milverton Primary School",
       "source": "search",
       "size_bytes": 217133,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://www.highfieldprimary.co.uk/wp-content/uploads/2021/04/Year-4-Reading-Assessment.pdf",
@@ -46,7 +49,8 @@
       "school": "Highfield Primary School",
       "source": "search",
       "size_bytes": 115924,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://coleridgeprimary.net/wp-content/uploads/2020/03/Y4-Reading-Answer-Booklet.pdf",
@@ -56,7 +60,8 @@
       "school": "Coleridge Primary School",
       "source": "search",
       "size_bytes": 306635,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://www.abbotshall.suffolk.sch.uk/_site/data/files/users/22/files/B858659BC75CE681FBD4D19F25D89BCC.pdf",
@@ -66,7 +71,8 @@
       "school": "Abbot's Hall Primary School",
       "source": "search",
       "size_bytes": 148870,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://www.buckstones.oldham.sch.uk/wp-content/uploads/2020/05/Questions.pdf",
@@ -76,7 +82,8 @@
       "school": "Buckstones Primary School",
       "source": "search",
       "size_bytes": 53254,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/3b8ece23ae324e918dcf0e6e6d7f85d1/year-4-week-1-reading-pdf.pdf",
@@ -86,7 +93,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 589423,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/2898d0b6c7d2479c815f0fcca2425008/year-4-week-2-reading-pdf.pdf",
@@ -96,7 +104,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 599949,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/e78983a45f884482bf74b526a075bd43/year-4-week-3-reading-pdf.pdf",
@@ -106,7 +115,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 596327,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/3fec87537c4a46a892d0ca7e60d469d7/year-4-week-4-reading-pdf.pdf",
@@ -116,7 +126,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 582909,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/416ddbf592b24f3dae49e0e62d9d44dc/year-4-week-5-reading-pdf.pdf",
@@ -126,7 +137,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 602653,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     },
     {
       "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/7ae82fb79e434918b915704955a2d616/year-4-week-6-reading-pdf.pdf",
@@ -136,7 +148,8 @@
       "school": "Elfrida Primary School",
       "source": "elfrida-pixl-pack",
       "size_bytes": 586196,
-      "verified": true
+      "verified": true,
+      "first_seen": "2026-06-28"
     }
   ]
 }
