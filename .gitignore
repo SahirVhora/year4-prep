@@ -8,3 +8,8 @@
 node_modules/
 __pycache__/
 venv/
+
+.audit-result.json
+.claude/settings.local.json
+.under-anything/
+.DS_Store
