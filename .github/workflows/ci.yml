@@ -17,40 +17,62 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Check HTML syntax
+      - name: Validate site files
         run: |
-          # Find all HTML files and check for basic syntax issues
-          find . -name "*.html" -not -path "./node_modules/*" -not -path "./.git/*" | while read file; do
-            echo "Checking $file"
-            # Check for unclosed tags, basic structure
-            if ! grep -q "<!DOCTYPE html>" "$file" && ! grep -q "<!doctype html>" "$file"; then
-              echo "Warning: $file missing DOCTYPE"
-            fi
-          done
+          python3 - <<'PY'
+          import json
+          import pathlib
+          import sys
+          from html.parser import HTMLParser
+          from urllib.parse import unquote, urlsplit
 
-      - name: Check for broken local links
-        run: |
-          # Simple check for broken local file references
-          find . -name "*.html" -not -path "./node_modules/*" -not -path "./.git/*" | while read file; do
-            dir=$(dirname "$file")
-            grep -oP 'href="[^"#]*"' "$file" 2>/dev/null | grep -v 'http' | grep -v 'mailto' | while read link; do
-              target=$(echo "$link" | sed 's/href="//;s/"$//')
-              if [ -n "$target" ] && [ ! -f "$dir/$target" ]; then
-                echo "Warning: $file references $target (not found)"
-              fi
-            done
-          done
+          root = pathlib.Path.cwd()
+          errors = []
 
-      - name: Validate JSON files
-        run: |
-          find . -name "*.json" -not -path "./node_modules/*" -not -path "./.git/*" | while read file; do
-            echo "Validating $file"
-            python3 -m json.tool "$file" > /dev/null || echo "Invalid JSON: $file"
-          done
+          class Links(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.targets = []
 
-      - name: Check file sizes
-        run: |
-          # Warn about large files
-          find . -type f -not -path "./.git/*" -not -path "./node_modules/*" -size +5M | while read file; do
-            echo "Warning: Large file detected: $file ($(du -h "$file" | cut -f1))"
-          done
+              def handle_starttag(self, tag, attrs):
+                  values = dict(attrs)
+                  key = "href" if tag == "a" else "src" if tag in {"img", "script", "source"} else None
+                  if key and values.get(key):
+                      self.targets.append(values[key])
+
+          for path in root.rglob("*.html"):
+              if any(part in {".git", "node_modules"} for part in path.parts):
+                  continue
+              text = path.read_text(encoding="utf-8")
+              if "<!doctype html>" not in text.lower():
+                  errors.append(f"{path}: missing DOCTYPE")
+              parser = Links()
+              parser.feed(text)
+              for raw in parser.targets:
+                  parsed = urlsplit(raw)
+                  if parsed.scheme or parsed.netloc or raw.startswith(("#", "mailto:", "tel:", "data:", "javascript:")):
+                      continue
+                  target_text = unquote(parsed.path)
+                  if not target_text:
+                      continue
+                  target = root / target_text.lstrip("/") if target_text.startswith("/") else path.parent / target_text
+                  if not target.exists():
+                      errors.append(f"{path}: missing local target {raw}")
+
+          for path in root.rglob("*.json"):
+              if any(part in {".git", "node_modules"} for part in path.parts):
+                  continue
+              try:
+                  json.loads(path.read_text(encoding="utf-8"))
+              except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+                  errors.append(f"{path}: invalid JSON: {exc}")
+
+          if errors:
+              print("Validation failed:", file=sys.stderr)
+              print("\n".join(f"- {error}" for error in errors), file=sys.stderr)
+              raise SystemExit(1)
+          print("HTML structure, local references, and JSON are valid")
+          PY
+
+      - name: Report large files
+        run: find . -type f -not -path './.git/*' -not -path './node_modules/*' -size +5M -print

@@ -1,0 +1,60 @@
+name: Weekly paper refresh
+
+on:
+  schedule:
+    - cron: "0 8 * * 0"
+  workflow_dispatch:
+
+concurrency:
+  group: weekly-paper-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install search dependency
+        run: python -m pip install ddgs
+
+      - name: Refresh and validate papers
+        run: |
+          python scrape_papers.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("data/maths.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          papers = data.get("papers")
+          if not isinstance(papers, list) or not papers:
+              raise SystemExit("Refusing to publish an empty paper collection")
+          if any(not item.get("url") or not item.get("name") for item in papers):
+              raise SystemExit("Every paper must have a name and URL")
+          print(f"Validated {len(papers)} papers")
+          PY
+
+      - name: Commit refreshed data
+        run: |
+          if git diff --quiet -- data/maths.json; then
+            echo "No paper changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/maths.json
+          git commit -m "chore: refresh Year 4 papers"
+          git push
