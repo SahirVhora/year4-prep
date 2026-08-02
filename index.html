@@ -240,11 +240,40 @@ a:hover { color: #e0c868; text-decoration: underline; }
   body { background: #fff; color: #000; }
   .card, .test-table tr { break-inside: avoid; }
 }
+
+/* Scroll-to-top button */
+#scroll-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  color: var(--accent2);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.2s, transform 0.2s, background 0.2s;
+  z-index: 90;
+}
+#scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+#scroll-top:hover { background: var(--bg4); }
 </style>
 </head>
 <body>
 
-<button id="hamburger" onclick="toggleSidebar()" aria-label="Menu">-</button>
+<button id="hamburger" onclick="toggleSidebar()" aria-label="Menu"><span aria-hidden="true">☰</span></button>
 <div id="overlay" onclick="closeSidebar()"></div>
 
 <nav id="sidebar">
@@ -780,6 +809,20 @@ function updateTermHighlight() {
 loadAllData().then(function() {
   updateTermHighlight();
 });
+
+// Scroll-to-top button
+(function() {
+  var btn = document.createElement('button');
+  btn.id = 'scroll-top';
+  btn.setAttribute('data-testid', 'scroll-to-top');
+  btn.setAttribute('aria-label', 'Scroll to top');
+  btn.innerHTML = '↑';
+  btn.onclick = function() { window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  document.body.appendChild(btn);
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+})();
 </script>
 </body>
 </html>
