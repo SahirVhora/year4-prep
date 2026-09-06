@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "lastScraped": "2026-08-30T13:37:25Z",
-    "totalPapers": 19,
+    "lastScraped": "2026-09-06T12:00:15Z",
+    "totalPapers": 20,
     "verifiedPapers": 12,
-    "unverifiedPapers": 7,
-    "brokenPapers": 1,
-    "newPapers": 0,
-    "contentHash": "7c7b1675ddbe"
+    "unverifiedPapers": 8,
+    "brokenPapers": 0,
+    "newPapers": 1,
+    "contentHash": "bf37b3947294"
   },
   "papers": [
     {
@@ -107,6 +107,18 @@
       "school": "PiXL Pack 6",
       "source": "known",
       "first_seen": "2026-07-26",
+      "verified": false,
+      "error": "HTTP Error 403: Forbidden",
+      "note": "May require browser download (S3/CloudFront restriction)"
+    },
+    {
+      "url": "https://churchfieldsjunior.com/wp-content/uploads/2020/04/Y4_Arithmetic_Test_10.pdf",
+      "name": "Year 4 Arithmetic Test 10",
+      "term": "Summer",
+      "test_number": 10,
+      "school": "Churchfields Junior School",
+      "source": "known",
+      "first_seen": "2026-09-06",
       "verified": false,
       "error": "HTTP Error 403: Forbidden",
       "note": "May require browser download (S3/CloudFront restriction)"
@@ -224,19 +236,6 @@
       "verified": false,
       "error": "HTTP Error 403: Forbidden",
       "note": "May require browser download (S3/CloudFront restriction)"
-    }
-  ],
-  "broken": [
-    {
-      "url": "https://churchfieldsjunior.com/wp-content/uploads/2020/04/Y4_Arithmetic_Test_10.pdf",
-      "name": "Year 4 Arithmetic Test 10",
-      "term": "Summer",
-      "test_number": 10,
-      "school": "Churchfields Junior School",
-      "source": "known",
-      "first_seen": "2026-06-28",
-      "verified": false,
-      "error": "HTTP 202"
     }
   ]
 }
