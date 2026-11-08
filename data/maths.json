@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "lastScraped": "2026-11-01T14:47:54Z",
+    "lastScraped": "2026-11-08T14:49:25Z",
     "totalPapers": 19,
     "verifiedPapers": 12,
     "unverifiedPapers": 7,
     "brokenPapers": 1,
-    "newPapers": 0,
+    "newPapers": 1,
     "contentHash": "7c7b1675ddbe"
   },
   "papers": [
@@ -234,7 +234,7 @@
       "test_number": 10,
       "school": "Churchfields Junior School",
       "source": "known",
-      "first_seen": "2026-09-27",
+      "first_seen": "2026-11-08",
       "verified": false,
       "error": "Remote end closed connection without response"
     }
