@@ -1,12 +1,13 @@
 {
   "metadata": {
     "lastScraped": "2026-11-08T14:49:25Z",
-    "totalPapers": 19,
+    "totalPapers": 13,
     "verifiedPapers": 12,
-    "unverifiedPapers": 7,
-    "brokenPapers": 1,
+    "unverifiedPapers": 1,
+    "brokenPapers": 7,
     "newPapers": 1,
-    "contentHash": "7c7b1675ddbe"
+    "contentHash": "0ed3624e006a",
+    "lastLinkCheck": "2026-11-14"
   },
   "papers": [
     {
@@ -54,18 +55,6 @@
       "verified": true
     },
     {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/484d2e00e5c24553bb764b9b8485654b",
-      "name": "year-4-arithmetic-test-4.pdf",
-      "term": "Summer",
-      "test_number": 4,
-      "school": "PiXL Pack 4",
-      "source": "known",
-      "first_seen": "2026-07-26",
-      "verified": false,
-      "error": "HTTP Error 403: Forbidden",
-      "note": "May require browser download (S3/CloudFront restriction)"
-    },
-    {
       "url": "https://www.swingate.medway.sch.uk/attachments/download.asp?file=495&type=pdf",
       "name": "Year 4 Arithmetic Test 5",
       "term": "Summer",
@@ -77,18 +66,6 @@
       "verified": true
     },
     {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/866af9690af84c0ab1138f24ed308b35",
-      "name": "year-4-arithmetic-test-5.pdf",
-      "term": "Summer",
-      "test_number": 5,
-      "school": "PiXL Pack 5",
-      "source": "known",
-      "first_seen": "2026-07-26",
-      "verified": false,
-      "error": "HTTP Error 403: Forbidden",
-      "note": "May require browser download (S3/CloudFront restriction)"
-    },
-    {
       "url": "https://www.swingate.medway.sch.uk/attachments/download.asp?file=496&type=pdf",
       "name": "Year 4 Arithmetic Test 6",
       "term": "Summer",
@@ -98,18 +75,6 @@
       "first_seen": "2026-06-28",
       "size_bytes": 350875,
       "verified": true
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/dce73aa251244fb387c1490fb9fa6be7",
-      "name": "year-4-arithmetic-test-6.pdf",
-      "term": "Summer",
-      "test_number": 6,
-      "school": "PiXL Pack 6",
-      "source": "known",
-      "first_seen": "2026-07-26",
-      "verified": false,
-      "error": "HTTP Error 403: Forbidden",
-      "note": "May require browser download (S3/CloudFront restriction)"
     },
     {
       "url": "https://www.primet.lancs.sch.uk/attachments/download.asp?file=2775&type=pdf",
@@ -132,42 +97,6 @@
       "first_seen": "2026-06-28",
       "size_bytes": 346654,
       "verified": true
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/9e3f336553a543e0b5646224aaab2500",
-      "name": "year-4-arithmetic-test-1.pdf",
-      "term": "Spring",
-      "test_number": 1,
-      "school": "PiXL Pack 1",
-      "source": "known",
-      "first_seen": "2026-07-26",
-      "verified": false,
-      "error": "HTTP Error 403: Forbidden",
-      "note": "May require browser download (S3/CloudFront restriction)"
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/b740b9e0504840e38d320a3877bf57ba",
-      "name": "year-4-arithmetic-test-2.pdf",
-      "term": "Spring",
-      "test_number": 2,
-      "school": "PiXL Pack 2",
-      "source": "known",
-      "first_seen": "2026-07-26",
-      "verified": false,
-      "error": "HTTP Error 403: Forbidden",
-      "note": "May require browser download (S3/CloudFront restriction)"
-    },
-    {
-      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/99ed9745aeb143edbedc70d985fd1b7f",
-      "name": "year-4-arithmetic-test-3.pdf",
-      "term": "Spring",
-      "test_number": 3,
-      "school": "PiXL Pack 3",
-      "source": "known",
-      "first_seen": "2026-07-26",
-      "verified": false,
-      "error": "HTTP Error 403: Forbidden",
-      "note": "May require browser download (S3/CloudFront restriction)"
     },
     {
       "url": "https://corshamregis.wilts.sch.uk/wp-content/uploads/2021/02/Arithmetic-Test-4-Y4-Spring.pdf",
@@ -237,6 +166,84 @@
       "first_seen": "2026-11-08",
       "verified": false,
       "error": "Remote end closed connection without response"
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/484d2e00e5c24553bb764b9b8485654b",
+      "name": "year-4-arithmetic-test-4.pdf",
+      "term": "Summer",
+      "test_number": 4,
+      "school": "PiXL Pack 4",
+      "source": "known",
+      "first_seen": "2026-07-26",
+      "verified": false,
+      "error": "HTTP 403",
+      "note": "Unavailable in link validation; omitted from active downloads.",
+      "last_checked": "2026-11-14"
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/866af9690af84c0ab1138f24ed308b35",
+      "name": "year-4-arithmetic-test-5.pdf",
+      "term": "Summer",
+      "test_number": 5,
+      "school": "PiXL Pack 5",
+      "source": "known",
+      "first_seen": "2026-07-26",
+      "verified": false,
+      "error": "HTTP 403",
+      "note": "Unavailable in link validation; omitted from active downloads.",
+      "last_checked": "2026-11-14"
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/dce73aa251244fb387c1490fb9fa6be7",
+      "name": "year-4-arithmetic-test-6.pdf",
+      "term": "Summer",
+      "test_number": 6,
+      "school": "PiXL Pack 6",
+      "source": "known",
+      "first_seen": "2026-07-26",
+      "verified": false,
+      "error": "HTTP 403",
+      "note": "Unavailable in link validation; omitted from active downloads.",
+      "last_checked": "2026-11-14"
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/9e3f336553a543e0b5646224aaab2500",
+      "name": "year-4-arithmetic-test-1.pdf",
+      "term": "Spring",
+      "test_number": 1,
+      "school": "PiXL Pack 1",
+      "source": "known",
+      "first_seen": "2026-07-26",
+      "verified": false,
+      "error": "HTTP 403",
+      "note": "Unavailable in link validation; omitted from active downloads.",
+      "last_checked": "2026-11-14"
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/b740b9e0504840e38d320a3877bf57ba",
+      "name": "year-4-arithmetic-test-2.pdf",
+      "term": "Spring",
+      "test_number": 2,
+      "school": "PiXL Pack 2",
+      "source": "known",
+      "first_seen": "2026-07-26",
+      "verified": false,
+      "error": "HTTP 403",
+      "note": "Unavailable in link validation; omitted from active downloads.",
+      "last_checked": "2026-11-14"
+    },
+    {
+      "url": "https://primarysite-prod-sorted.s3.amazonaws.com/elfrida-primary-school-king-alfred-federation/UploadedDocument/99ed9745aeb143edbedc70d985fd1b7f",
+      "name": "year-4-arithmetic-test-3.pdf",
+      "term": "Spring",
+      "test_number": 3,
+      "school": "PiXL Pack 3",
+      "source": "known",
+      "first_seen": "2026-07-26",
+      "verified": false,
+      "error": "HTTP 403",
+      "note": "Unavailable in link validation; omitted from active downloads.",
+      "last_checked": "2026-11-14"
     }
   ]
 }

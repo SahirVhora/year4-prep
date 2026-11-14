@@ -1,24 +1,14 @@
 {
   "metadata": {
     "lastScraped": "2026-06-28T07:03:31Z",
-    "totalPapers": 21,
-    "verifiedPapers": 21,
+    "totalPapers": 19,
+    "verifiedPapers": 19,
     "unverifiedPapers": 0,
-    "brokenPapers": 0,
-    "contentHash": "548f90930631"
+    "brokenPapers": 2,
+    "contentHash": "4da47f35a71f",
+    "lastLinkCheck": "2026-11-14"
   },
   "papers": [
-    {
-      "url": "https://www.longsutton.lincs.sch.uk/classes/HomeLearning/22%20Feb/Year%204/Tuesday/Y4%20GPS%20PAPER%201%20QUESTIONS%20-%20SPRING.pdf",
-      "name": "Year 4 GPS Paper 1 (Spring)",
-      "term": "Spring",
-      "test_number": 1,
-      "school": "Long Sutton Primary School",
-      "source": "search",
-      "size_bytes": 231637,
-      "verified": true,
-      "first_seen": "2026-06-28"
-    },
     {
       "url": "https://st-marys.richmond.sch.uk/wp-content/uploads/2020/05/Year-4-Grammar-Punctuation-and-Spelling-Quiz.pdf",
       "name": "Year 4 Grammar Punctuation & Spelling Quiz",
@@ -82,17 +72,6 @@
       "school": "Trinity Primary School",
       "source": "search",
       "size_bytes": 166360,
-      "verified": true,
-      "first_seen": "2026-06-28"
-    },
-    {
-      "url": "https://www.roebuck.herts.sch.uk/attachments/download.asp?file=8613&type=pdf",
-      "name": "Year 4 Grammar and Punctuation",
-      "term": "All",
-      "test_number": null,
-      "school": "Roebuck Primary School",
-      "source": "search",
-      "size_bytes": 112303,
       "verified": true,
       "first_seen": "2026-06-28"
     },
@@ -238,6 +217,36 @@
       "size_bytes": 600688,
       "verified": true,
       "first_seen": "2026-06-28"
+    }
+  ],
+  "broken": [
+    {
+      "url": "https://www.longsutton.lincs.sch.uk/classes/HomeLearning/22%20Feb/Year%204/Tuesday/Y4%20GPS%20PAPER%201%20QUESTIONS%20-%20SPRING.pdf",
+      "name": "Year 4 GPS Paper 1 (Spring)",
+      "term": "Spring",
+      "test_number": 1,
+      "school": "Long Sutton Primary School",
+      "source": "search",
+      "size_bytes": 231637,
+      "verified": false,
+      "first_seen": "2026-06-28",
+      "last_checked": "2026-11-14",
+      "error": "HTTP 404",
+      "note": "Unavailable in link validation; omitted from active downloads."
+    },
+    {
+      "url": "https://www.roebuck.herts.sch.uk/attachments/download.asp?file=8613&type=pdf",
+      "name": "Year 4 Grammar and Punctuation",
+      "term": "All",
+      "test_number": null,
+      "school": "Roebuck Primary School",
+      "source": "search",
+      "size_bytes": 112303,
+      "verified": false,
+      "first_seen": "2026-06-28",
+      "last_checked": "2026-11-14",
+      "error": "HTTP 404",
+      "note": "Unavailable in link validation; omitted from active downloads."
     }
   ]
 }
