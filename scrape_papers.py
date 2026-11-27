@@ -112,6 +112,8 @@ def fetch_url(url, timeout=REQUEST_TIMEOUT, referer=None):
     try:
         with urlopen(req, timeout=timeout) as resp:
             content = resp.read()
+            if not content.startswith(b"%PDF-"):
+                return resp.status, len(content), "Response is not a PDF"
             return resp.status, len(content), None
     except HTTPError as e:
         return e.code, 0, str(e)
@@ -325,13 +327,6 @@ def main():
             verified.append(paper)
             is_new = paper["first_seen"] == today
             print(f"OK ({result['size']:,} bytes){' [NEW]' if is_new else ''}")
-        elif "403" in str(result.get("error", "")) or "Forbidden" in str(result.get("error", "")):
-            # S3/CloudFront blocks non-browser requests but links work in browsers
-            paper["verified"] = False
-            paper["error"] = result["error"]
-            paper["note"] = "May require browser download (S3/CloudFront restriction)"
-            unverified.append(paper)
-            print(f"UNVERIFIED (browser-only): {result['error']}")
         else:
             paper["verified"] = False
             paper["error"] = result["error"]

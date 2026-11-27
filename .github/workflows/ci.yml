@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Validate site files
+        # Resource filtering must not republish denied files as browser-only.
         run: |
           python3 - <<'PY'
           import json
@@ -76,3 +77,6 @@ jobs:
 
       - name: Report large files
         run: find . -type f -not -path './.git/*' -not -path './node_modules/*' -size +5M -print
+
+      - name: Test PDF validation and unavailable-resource handling
+        run: python3 -m unittest discover -s tests

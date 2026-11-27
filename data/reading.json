@@ -1,11 +1,12 @@
 {
   "metadata": {
     "lastScraped": "2026-06-28T07:03:31Z",
-    "totalPapers": 13,
-    "verifiedPapers": 13,
+    "totalPapers": 12,
+    "verifiedPapers": 12,
     "unverifiedPapers": 0,
-    "brokenPapers": 0,
-    "contentHash": "13dffb2695ea"
+    "brokenPapers": 1,
+    "contentHash": "3f87ee01aca5",
+    "lastLinkCheck": "2026-11-14"
   },
   "papers": [
     {
@@ -49,17 +50,6 @@
       "school": "Highfield Primary School",
       "source": "search",
       "size_bytes": 115924,
-      "verified": true,
-      "first_seen": "2026-06-28"
-    },
-    {
-      "url": "https://coleridgeprimary.net/wp-content/uploads/2020/03/Y4-Reading-Answer-Booklet.pdf",
-      "name": "Year 4 Reading Answer Booklet",
-      "term": "Spring",
-      "test_number": null,
-      "school": "Coleridge Primary School",
-      "source": "search",
-      "size_bytes": 306635,
       "verified": true,
       "first_seen": "2026-06-28"
     },
@@ -150,6 +140,22 @@
       "size_bytes": 586196,
       "verified": true,
       "first_seen": "2026-06-28"
+    }
+  ],
+  "broken": [
+    {
+      "url": "https://coleridgeprimary.net/wp-content/uploads/2020/03/Y4-Reading-Answer-Booklet.pdf",
+      "name": "Year 4 Reading Answer Booklet",
+      "term": "Spring",
+      "test_number": null,
+      "school": "Coleridge Primary School",
+      "source": "search",
+      "size_bytes": 306635,
+      "verified": false,
+      "first_seen": "2026-06-28",
+      "last_checked": "2026-11-14",
+      "error": "HTTP 404",
+      "note": "Unavailable in link validation; omitted from active downloads."
     }
   ]
 }
